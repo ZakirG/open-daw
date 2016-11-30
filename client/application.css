@@ -1,6 +1,30 @@
 #application {
-    min-height:400px;
-    padding:60px;
+    padding:20px 0;
     text-align:center;
-    color:#D3D3D3;
+    min-height:400px;
+    width:100%;
+    margin:20px auto;
+}
+
+#control-bar {
+    width:100%;
+    padding:20px 40px;
+    margin:auto;
+}
+
+.large-button {
+    font-size: 24px;
+    color:rgba(0,0,0, 1);
+    border:0;
+    background:white;
+    border-radius:3px;
+    opacity:0.7;
+    padding:0 10px;
+    margin:0 5px;
+    -webkit-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+            box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+}
+
+@media screen and (min-width:767px) {
+
 }
