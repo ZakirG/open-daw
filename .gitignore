@@ -1,1 +1,4 @@
-node_modules/
+.meteor/dev_bundle
+.DS_Store
+MongoDB.bat
+node_modules
