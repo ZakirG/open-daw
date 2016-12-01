@@ -3,16 +3,18 @@
     padding:5px 10px;
     border-radius:7px;
     box-shadow:0 0 5px #00FFB6;
-    margin:5px auto;
+    margin:10px auto;
     text-align:left;
 }
 
 h2.sound-name {
+    display:inline-block;
     font-size:14px;  
-    margin:10px 15px;
+    margin:10px 5px;
 }
 
 button.text-button {
+    display:inline-block;
     font-size: 12px;
     color:rgba(0,0,0, 1);
     border:0;
@@ -20,21 +22,46 @@ button.text-button {
     border-radius:3px;
     opacity:0.7;
     padding:5px 10px;
-    margin:5px 10px;
+    margin:5px;
     -webkit-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
             box-shadow:0px 0px 10px rgba(0,0,0,0.2);
 }
 
 .track-sequencer {
     height:40px;
-    border-radius:20px;
-    -webkit-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
-            box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+    border-radius:5px;
     margin:10px 0;
     background:white;
+    position:relative;
 }
 
 .track-controls {
     margin:10px 0;
+    padding:0;
     height:auto;
+}
+
+.delete-button {
+    display:inline-block;
+    background:none;
+    font-size: 24px;
+    color:rgba(0,0,0, 0.6);
+    border:0;
+    border-radius:3px;
+    opacity:0.7;
+    padding:0;
+    top:5px;
+    margin:0 5px 0 0;
+    z-index:2;
+    position:relative;
+    -webkit-transition: color .2s;
+            transition: color .2s;
+}
+
+.delete-button:hover {
+    color:rgba(0,0,0, 1);
+}
+
+.delete-button span {
+    pointer-events:none;
 }

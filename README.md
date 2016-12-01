@@ -2,7 +2,7 @@
 
 ##### A mobile-friendly music sequencing web app written in MeteorJS. 
 
-#### Build instructions:
+###### Build instructions:
 Install <a href="https://www.meteor.com/">Meteor</a> and then run
 ```
 git clone https://github.com/ZakirG/meteor-daw.git
