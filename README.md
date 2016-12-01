@@ -2,12 +2,6 @@
 
 ##### A mobile-friendly music sequencing web app written in MeteorJS. 
 
-###### Desktop screenshot:
-<img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="350"/>
-
-###### Mobile screenshot:
-<img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
-
 ###### What's done so far:
 - initial page layout -- header, footer, control bar
 
@@ -25,4 +19,11 @@
 - users can export their sequences as human-readable text files of metadata
 - users can reimport these text files
 
+###### Desktop screenshot:
+<img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="350"/>
+
+###### Mobile screenshot:
+<img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
+
 Project started 11/29/2016.
+
