@@ -3,10 +3,10 @@
 ##### A mobile-friendly music sequencing web app written in MeteorJS. 
 
 ###### Desktop screenshot:
-<img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="200"/>
+<img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="350"/>
 
 ###### Mobile screenshot:
-<img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="350"/>
+<img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
 
 ###### What's done so far:
 - initial page layout -- header, footer, control bar
