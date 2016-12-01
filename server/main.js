@@ -1,5 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-  // code to run on server at startup
+    if(Sounds.find().count() == 0) { 
+        var presetSounds = ['/fake_file.wav'];
+        for(let fileName of presetSounds) {
+            Sounds.insert({ 'path' : fileName, 'type' : 'presetSound' });
+        }    
+    }
 });

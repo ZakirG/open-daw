@@ -1,5 +1,7 @@
 <template name="application">
     <div class="row" id="application">
-        
+        {{#each sounds}}
+            {{> track}}
+        {{/each}}
     </div>
 </template>

@@ -2,9 +2,11 @@
 
 ##### A mobile-friendly music sequencing web app written in MeteorJS. 
 
+<img src="public/screenshots/desktop_screenshot.png" alt="App Screenshot on Desktop" style="width: 200px;"/>
+<img src="public/screenshots/mobile_screenshot.png" alt="App Screenshot on Mobile" style="width: 200px;"/>
 
 ###### What's done so far:
-- initial page layout -- header and footer
+- initial page layout -- header, footer, control bar
 
 ###### Feature goals:
 - users can select sounds from a list of presets and add new tracks
