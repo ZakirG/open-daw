@@ -1,14 +1,15 @@
 <template name="track">
     <div class="row secondary-color" id="track">
         <div class="track-controls col-md-4 col-sm-12 col-xs-12">
-            <div class="col-xs-6">
-                <button class="delete-button" name="{{_id}}"><span class="glyphicon glyphicon-remove"></span></button>
-                <h2 class="sound-name">{{name}}</h2>
-            </div>
-            <div class="col-xs-6">
-                <button class="text-button">MUTE</button>
-                <button class="text-button">SOLO</button>
-            </div>
+            <button class="delete-button" name="{{_id}}"><span class="glyphicon glyphicon-remove"></span></button>                
+            <select class="sound-select">
+                <option value="{{_id}}"><h2 class="sound-name">{{name}}</h2></option>
+                {{#each otherSounds name}}
+                    <option value="{{_id}}"><h2 class="sound-name">{{name}}</h2></option>
+                {{/each}}
+            </select>
+            <button class="text-button">M<span class="hidden-xs">UTE</span></button>
+            <button class="text-button">S<span class="hidden-xs">OLO</span></button>
         </div>
         <div class="track-sequencer col-md-8 col-sm-12 col-xs-12"></div>
     </div>
