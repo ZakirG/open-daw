@@ -5,7 +5,7 @@ import './main.html';
 
 Meteor.subscribe('allSounds');
 
-Template.layout.events({
+Template.controlFrame.events({
     'click #add-track' : function() {
         // When a user creates a new track, the kick will be the default sound.
         SelectedSounds.insert(strongKick);
