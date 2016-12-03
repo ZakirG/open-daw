@@ -1,7 +1,6 @@
 <template name="track">
     <div class="row track {{#if muted}} muted {{else}} {{/if}}">
         <div class="track-controls col-md-4 col-sm-12 col-xs-12">
-            <button class="delete-button" name="{{_id}}"><span class="glyphicon glyphicon-remove"></span></button>                
             <select class="sound-select">
                 <option value="{{_id}}"><h2 class="sound-name">{{name}}</h2></option>
                 {{#each otherSounds name}}
@@ -9,7 +8,7 @@
                 {{/each}}
             </select>
             <button class="text-button mute-button {{#if muted}}active{{else}}inactive{{/if}}" id="{{_id}}">M<span class="hidden-xs">UTE</span></button>
-            <!-- <button class="text-button inactive" id="solo-button">S<span class="hidden-xs">OLO</span></button> -->
+            <!-- <button class="text-button inactive" id="solo-button">S<span class="hidden-xs">OLO</span></button> -->               
         </div>
         <div class="track-sequencer col-md-8 col-sm-12 col-xs-12">
             <div class="sequencer-wrapper">
@@ -22,5 +21,6 @@
                 </table>
             </div>
         </div>
+        <button class="delete-button" name="{{_id}}"><span class="glyphicon glyphicon-trash"></span></button> 
     </div>
 </template>

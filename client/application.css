@@ -1,9 +1,9 @@
 #application {
-    padding:10px 0;
+    padding:0;
     text-align:center;
     height:470px;
     width:100%;
-    margin:0px auto;
+    margin:-2px auto 0px auto;
     overflow:auto;
 }
 
@@ -11,6 +11,7 @@
     width:100%;
     padding:20px 40px;
     margin:auto;
+    z-index:2;
 }
 
 .large-button {

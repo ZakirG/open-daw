@@ -1,18 +1,19 @@
 .track {
     width:95%;
     padding:5px 10px;
-    border-radius:7px;
-    box-shadow:0 5px 10px rgba(0,0,0,0.2);
-    margin:10px auto;
+    /* box-shadow:0 5px 10px rgba(0,0,0,0.2); */
+    margin:0px auto 0 auto;
     text-align:left;
-    background-color:#00E1FF;
+    /* background-color:#00E1FF; */
     -webkit-transition:opacity .2s, background-color .1s;
             transition:opacity .2s, background-color .1s;
+    position:relative;
+    border-top: 1px solid rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 0px rgba(255,255,255,.4);
 }
 
 .track.muted {
-    background:gray;
-    opacity:.8;
+
 }
 
 
@@ -28,11 +29,19 @@ button.text-button {
     color: black;
     border:0;
     border-radius:3px;
+    border:solid 2px #c3c3c3;
     opacity:0.7;
     padding:5px 10px;
-    margin:5px;
-    -webkit-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
-            box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+    /* 
+-webkit-box-shadow:0px 5px 5px rgba(0,0,0,0.2);
+            box-shadow:0px 5px 5px rgba(0,0,0,0.2);
+ */
+    -webkit-transition: background-color .2s, border-color .2s;
+            transition: background-color .2s, border-color .2s;
+}
+
+button.text-button:hover {
+    border:solid gray 2px;
 }
 
 button.text-button span {
@@ -53,6 +62,8 @@ button.text-button span {
     padding: 0 10px 0 15px;
     width:auto;
     display:inline-block;
+    position:relative;
+    box-shadow: 0 3px 5px #ccc inset;
 }
 
 table.sequencer-table td:nth-child(4n+0) {
@@ -61,23 +72,24 @@ table.sequencer-table td:nth-child(4n+0) {
 
 .track-controls {
     margin:10px 0;
-    padding:0;
+    padding:10px 0 0 0;
     height:auto;
 }
 
 .delete-button {
     display:inline-block;
     background:none;
-    font-size: 24px;
-    color:rgba(0,0,0, 0.6);
+    font-size: 16px;
+    color:rgba(0,0,0, 0.4);
     border:0;
     border-radius:3px;
     opacity:0.7;
     padding:0;
-    top:5px;
+    top:25px;
+    right:5px;
     margin:0px 10px;
     z-index:2;
-    position:relative;
+    position:absolute;
     -webkit-transition: color .2s;
             transition: color .2s;
 }
@@ -97,27 +109,38 @@ table.sequencer-table td:nth-child(4n+0) {
 }
 
 button.sequence-step {
-    border:solid 1px gray;
     margin:10px 5px;
     width:20px;
     height:20px;
     border-radius:5px;
     display:inline-block;
+    -webkit-transition:-webkit-transform .1s;
+            transition:transform .1s;
+}
+
+button.sequence-step:hover {
+    -webkit-transform:scale(1.1);
+            transform:scale(1.1);
 }
 
 button.sequence-step.active {
-    background-color:#FF73F7;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-color:#00CD00;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    border:solid 1px #00A400;
 }
 
 button.sequence-step.inactive {
     background-color:#ccc;
+    border:solid 1px #c3c3c3;
 }
 
 .mute-button.active {
     background:red;
+    color:white;
+    border:solid 2px red;
 }
 
 .mute-button.inactive {
-    background:#ccc;
+    background:white;
+    color:#c3c3c3;
 }
