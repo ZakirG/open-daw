@@ -1,6 +1,11 @@
 <template name="track">
     <div class="row track {{#if muted}} muted {{else}} {{/if}}">
         <div class="track-controls col-md-4 col-sm-12 col-xs-12">
+           <!-- 
+ <div class=".dial-wrapper">
+                <input type="text" value="80" class="dial" >
+            </div>
+ -->
             <select class="sound-select">
                 <option value="{{_id}}"><h2 class="sound-name">{{name}}</h2></option>
                 {{#each otherSounds name}}
@@ -16,11 +21,15 @@
                     <tr>
                         {{#each sequenceSteps}}
                             <td><button class="sequence-step {{#if stepIsChecked @index ../_id}}active{{else}}inactive{{/if}}" name="{{@index}}" id="{{../_id}}"></button></td>
+<!--                              onClick="playSoundStep(this)" -->
                         {{/each}}
                     </tr>
                 </table>
             </div>
         </div>
         <button class="delete-button" name="{{_id}}"><span class="glyphicon glyphicon-trash"></span></button> 
+        <audio id="{{_id}}">
+            <source src="{{path}}" type="audio/wav" /> 
+        </audio>
     </div>
 </template>
