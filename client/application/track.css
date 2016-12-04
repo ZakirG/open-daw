@@ -1,15 +1,13 @@
 .track {
     width:95%;
     padding:5px 10px;
-    /* box-shadow:0 5px 10px rgba(0,0,0,0.2); */
     margin:0px auto 0 auto;
     text-align:left;
-    /* background-color:#00E1FF; */
     -webkit-transition:opacity .2s, background-color .1s;
             transition:opacity .2s, background-color .1s;
     position:relative;
-    border-top: 1px solid rgba(0,0,0,.1);
-    box-shadow: inset 0 1px 0px rgba(255,255,255,.4);
+    border-top: 2px solid rgba(0,0,0,.1);
+    box-shadow: inset 0 2px 0px rgba(255,255,255,.4);
 }
 
 .track.muted {
@@ -32,10 +30,6 @@ button.text-button {
     border:solid 2px #c3c3c3;
     opacity:0.7;
     padding:5px 10px;
-    /* 
--webkit-box-shadow:0px 5px 5px rgba(0,0,0,0.2);
-            box-shadow:0px 5px 5px rgba(0,0,0,0.2);
- */
     -webkit-transition: background-color .2s, border-color .2s;
             transition: background-color .2s, border-color .2s;
 }
@@ -63,7 +57,6 @@ button.text-button span {
     display:inline-block;
     position:relative;
     top:5px;
-    box-shadow: 0 3px 5px #ccc inset;
 }
 
 table.sequencer-table td:nth-child(4n+0) {
@@ -104,7 +97,8 @@ table.sequencer-table td:nth-child(4n+0) {
 .sound-select {
     font-size:16px;
     margin: 0px 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border:solid #ccc 2px;
+/*     box-shadow: 0 0 10px rgba(0,0,0,0.1); */
 }
 
 button.sequence-step {
@@ -124,7 +118,6 @@ button.sequence-step:hover {
 
 button.sequence-step.active {
     background-color:#00CD00;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     border:solid 1px #00A400;
 }
 

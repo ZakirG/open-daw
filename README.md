@@ -12,16 +12,13 @@ meteor
 You may be prompted to install additional packages. 
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
-###### What's done so far:
+###### Features:
 - responsive initial page layout -- header, footer, control bar, tracks, sequencer
-- button functionality for: track mute, sequencer steps, add tracks, sound selection
-- users can select sounds from a list of presets and add new tracks
+- track controls: mute, volume knob, sequencer steps, sound selection
 
-###### Feature goals:
+###### Future feature goals:
 - users can play back their sequenced instrumentals
-- volume control on individual tracks
 - master volume control
-- mobile friendliness
 - tempo selection
 - sequences can be bounced & exported to wav files
 
@@ -42,4 +39,6 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
 
 Project started 11/29/2016.
+
+Thank you to https://github.com/eskimoblood/jim-knopf for their knob control library, used in this application.
 

@@ -1,5 +1,7 @@
+var sequenceIsPlaying;
+
 Template.application.onRendered(function(){    
-   
+   sequenceIsPlaying = false;
 });
 
 Template.application.helpers({
@@ -8,8 +10,58 @@ Template.application.helpers({
     }
 });
 
+Template.controlFrame.events({
+    'click #play': function(){
+        sequenceIsPlaying = true;
+        playSequence();
+    },
+    'click #pause': function(){
+        sequenceIsPlaying = false;
+    },
+    'click #add-track' : function() {
+        SelectedSounds.insert(strongKick); // When a user creates a new track, the kick will be the default sound.
+    } 
+});
+
+// Plays the user-generated sequence
+function playSequence() {
+    var bpm = $('#tempo').val();
+    // We treat each sequence step as a 16th note
+    var timeBetweenSteps = ((60 / bpm) * 1000) / 2; // in milliseconds
+    sequenceConfiguration = {
+        beatNumber : 0, 
+        totalNumberOfBeats : 8,
+        timeBetweenSteps : timeBetweenSteps,
+        totalNumberOfBeats : 8
+    }
+    tempoStep(SelectedSounds.find(), sequenceConfiguration);
+}
+
+// Plays all tracks with events at the given step and set up the next step
+function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
+    if(!sequenceIsPlaying) {
+        return;
+    }
+    selectedSoundsCursor.forEach(function(track){
+        if(track.sequenceSteps[sequenceConfiguration.beatNumber] && !track.muted) {
+            playSound(track._id);
+        }
+    });
+    sequenceConfiguration.beatNumber++;
+    if(sequenceConfiguration.beatNumber >= sequenceConfiguration.totalNumberOfBeats) { 
+        sequenceConfiguration.beatNumber = 0;
+    }
+    setTimeout( 
+        (tempoStep).bind(undefined, SelectedSounds.find(), sequenceConfiguration) 
+        , sequenceConfiguration.timeBetweenSteps
+    );
+}
+// Plays the sound associated with a given track
 function playSound(selectedSoundId) {
     var audioTag = $('#audio-' + selectedSoundId);
+    if (!audioTag.paused) {
+        audioTag.prop('currentTime', 0);
+    }
     audioTag.trigger('play');
 }
 
