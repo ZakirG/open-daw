@@ -13,13 +13,15 @@ You may be prompted to install additional packages.
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
 ###### Features:
+- basic sequencer functionality: program rhythms at custom tempos
 - responsive initial page layout -- header, footer, control bar, tracks, sequencer
 - track controls: mute, volume knob, sequencer steps, sound selection
+- master controls: play, pause, add new tracks, adjust tempo
 
-###### Future feature goals:
-- users can play back their sequenced instrumentals
+###### Upcoming features:
+- more precise timing of sample playback
+- allow for tempo changes during playback
 - master volume control
-- tempo selection
 - sequences can be bounced & exported to wav files
 
 ###### Stretch goals:
