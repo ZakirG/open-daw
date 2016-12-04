@@ -20,12 +20,15 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 ###### Feature goals:
 - users can play back their sequenced instrumentals
 - volume control on individual tracks
+- master volume control
 - mobile friendliness
 - tempo selection
+- sequences can be bounced & exported to wav files
 
 ###### Stretch goals:
+- sequences can be bounced & exported to mp3 files
+- panning knobs on individual tracks
 - ability to choose how finely measures are subdivided
-- sequences can be bounced & exported to wav or mp3 files
 - allow for user-uploaded sounds for sequencing
 - allow for user-uploaded audio tracks
 - users can select from premade sequences

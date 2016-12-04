@@ -6,10 +6,10 @@
                 <input type="text" value="80" class="dial" >
             </div>
  -->
-            <select class="sound-select">
-                <option value="{{_id}}"><h2 class="sound-name">{{name}}</h2></option>
-                {{#each otherSounds name}}
-                    <option value="{{_id}}"><h2 class="sound-name">{{name}}</h2></option>
+            <select class="sound-select" id="{{_id}}">
+                <option value="{{path}}"><h2 class="sound-name">{{name}}</h2></option>
+                {{#each otherSounds path}}
+                    <option value="{{path}}"><h2 class="sound-name">{{name}}</h2></option>
                 {{/each}}
             </select>
             <button class="text-button mute-button {{#if muted}}active{{else}}inactive{{/if}}" id="{{_id}}">M<span class="hidden-xs">UTE</span></button>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <button class="delete-button" name="{{_id}}"><span class="glyphicon glyphicon-trash"></span></button> 
-        <audio id="{{_id}}">
+        <audio id="audio-{{_id}}">
             <source src="{{path}}" type="audio/wav" /> 
         </audio>
     </div>

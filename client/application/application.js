@@ -9,8 +9,8 @@ Template.application.helpers({
 });
 
 function playSound(selectedSoundId) {
-    var elementString = 'audio#' + selectedSoundId;
-    $(elementString).trigger('play');
+    var audioTag = $('#audio-' + selectedSoundId);
+    audioTag.trigger('play');
 }
 
 Template.track.onRendered(function(){
@@ -27,8 +27,8 @@ Template.track.onRendered(function(){
 });
 
 Template.track.helpers({
-    otherSounds: function(thisSoundsName){
-        return AllSounds.find({name : {$ne : thisSoundsName}});
+    otherSounds: function(thisSoundsPath){
+        return AllSounds.find({path : {$ne : thisSoundsPath}});
     },
     stepIsChecked: function(stepNumber, trackId) {
         return !!(SelectedSounds.findOne({_id : trackId}).sequenceSteps[stepNumber]);
@@ -43,17 +43,24 @@ Template.track.events({
         var selectedSound = SelectedSounds.findOne({_id : event.target.id})
         var newSequenceSteps = selectedSound.sequenceSteps;
         newSequenceSteps[event.target.name] = 1 - newSequenceSteps[event.target.name];
-        SelectedSounds.update({_id : event.target.id} , {$set : {'sequenceSteps' : newSequenceSteps}});
+        
         // Play the sound the user selected, if it was toggled to true
-        console.log(newSequenceSteps[event.target.name]);
-        console.log(event.target.id);
         if(newSequenceSteps[event.target.name] && !selectedSound.muted) {
             playSound(event.target.id);
         }
+        
+        SelectedSounds.update({_id : event.target.id} , {$set : {'sequenceSteps' : newSequenceSteps}});
     },
     'click .mute-button': function(event){
         var newMuteState = !!!SelectedSounds.findOne({_id : event.target.id}).muted;
         SelectedSounds.update({_id : event.target.id} , {$set : {'muted' : newMuteState}});
+    },
+    'change .sound-select': function(event){
+        var newSound = AllSounds.findOne({'path' : $(event.target).val()});
+        SelectedSounds.update({_id : event.target.id}, {$set : 
+            {'path' : newSound.path  , 'name' : newSound.name }
+        });
+        $('audio#audio-' + event.target.id).trigger('load'); // Reload the audio whose source has changed
     }
 });
 
