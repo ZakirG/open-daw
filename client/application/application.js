@@ -13,17 +13,16 @@ function playSound(selectedSoundId) {
     audioTag.trigger('play');
 }
 
+function updateSoundVolume(selectedSoundId, newVolume){
+    $('audio#audio-' + selectedSoundId).prop('volume',  newVolume/10);
+}
+
 Template.track.onRendered(function(){
-    // $(function() {
-//         $(".dial").knob({
-//             'min':0,
-//             'max':100,
-//             'angleOffset': 225,
-//             'angleArc': 270,
-//             'fgColor':"#00E1FF",
-//             'height': '90px'
-//         });
-//     });
+    var selectedSoundId = Template.currentData()._id;
+    new Knob(document.getElementById('volume-knob-' + selectedSoundId), new Ui.P2());
+    $('input#volume-knob-' + selectedSoundId).change(function(){
+        updateSoundVolume(selectedSoundId, $(this).val());
+    });
 });
 
 Template.track.helpers({
