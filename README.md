@@ -15,20 +15,22 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 ###### What's done so far:
 - initial page layout -- header, footer, control bar, tracks, sequencer
 - button functionality for: track mute, sequencer steps, add tracks, sound selection
+- users can select sounds from a list of presets and add new tracks
 
 ###### Feature goals:
-- users can select sounds from a list of presets and add new tracks
-- each track has 16th note slots for sound clip playback
 - users can play back their sequenced instrumentals
-- the application is mobile-friendly with smooth use above 320px width
-- the application works on chrome and firefox
+- volume control on individual tracks
+- mobile friendliness
+- tempo selection
 
 ###### Stretch goals:
-- tempo selection
-- sequences can be bounced & exported to wav, m4a, mp3 files
-- users can select from premade sequences 
-- users can export their sequences as human-readable text files of metadata
-- users can reimport these text files
+- ability to choose how finely measures are subdivided
+- sequences can be bounced & exported to wav or mp3 files
+- allow for user-uploaded sounds for sequencing
+- allow for user-uploaded audio tracks
+- users can select from premade sequences
+- users can export their sequences as metadata text files bundled with audio files
+- users can reimport these text files to reobtain the sequencer's state
 
 ###### Desktop screenshot:
 <img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="350"/>

@@ -40,13 +40,14 @@ Template.track.events({
         SelectedSounds.remove({_id: event.target.name});
     },
     'click .sequence-step': function(event){
-        var newSequenceSteps = SelectedSounds.findOne({_id : event.target.id}).sequenceSteps;
+        var selectedSound = SelectedSounds.findOne({_id : event.target.id})
+        var newSequenceSteps = selectedSound.sequenceSteps;
         newSequenceSteps[event.target.name] = 1 - newSequenceSteps[event.target.name];
         SelectedSounds.update({_id : event.target.id} , {$set : {'sequenceSteps' : newSequenceSteps}});
         // Play the sound the user selected, if it was toggled to true
         console.log(newSequenceSteps[event.target.name]);
         console.log(event.target.id);
-        if(newSequenceSteps[event.target.name]) {
+        if(newSequenceSteps[event.target.name] && !selectedSound.muted) {
             playSound(event.target.id);
         }
     },
