@@ -13,7 +13,7 @@ You may be prompted to install additional packages.
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
 ###### What's done so far:
-- initial page layout -- header, footer, control bar, tracks, sequencer
+- responsive initial page layout -- header, footer, control bar, tracks, sequencer
 - button functionality for: track mute, sequencer steps, add tracks, sound selection
 - users can select sounds from a list of presets and add new tracks
 
