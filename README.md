@@ -25,13 +25,13 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 - allow for tempo changes during playback
 - master volume control
 - sequences can be bounced & exported to wav files
-
-###### Possible feature goals for a v2.0:
-- sequences can be bounced & exported to mp3 files
-- panning knobs on individual tracks
 - allow for user-uploaded sounds for sequencing
-- allow for user-uploaded audio tracks
-- ability to download sequencer state as a text file of human-readable metadata
+
+###### Feature goals for v2.0:
+- panning knobs on individual tracks
+- allow for user-uploaded audio tracks with preview waveforms
+- ability to download/reupload sequencer state as a text file of human-readable metadata
+- integration of <a href="http://sox.sourceforge.net/Docs/FAQ">SoX</a> for VST-like track effects
 
 
 Project started 11/29/2016.
