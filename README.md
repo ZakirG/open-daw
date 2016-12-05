@@ -3,7 +3,7 @@
 ##### A mobile-friendly music sequencing web app written in MeteorJS. 
 
 ###### Screenshots (desktop & mobile):
-<img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="500"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
+<img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="550"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
 
 ###### Build instructions:
 Install <a href="https://www.meteor.com/">Meteor</a> and then run
