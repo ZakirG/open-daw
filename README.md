@@ -5,6 +5,12 @@
 ###### Screenshots (desktop & mobile):
 <img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="550"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
 
+###### Features:
+- basic sequencer functionality: program rhythms at a range of tempos with sound presets
+- track controls: mute, volume knob, sequencer steps, sound selection
+- master controls: play, pause, add new tracks, adjust tempo
+- responsive layout -- header, footer, control bar, tracks, sequencer
+
 ###### Build instructions:
 Install <a href="https://www.meteor.com/">Meteor</a> and then run
 ```
@@ -14,12 +20,6 @@ meteor
 ```
 You may be prompted to install additional packages. 
 Once the app is running, navigate to http://localhost:3000/ in your browser.
-
-###### Features:
-- basic sequencer functionality: program rhythms at a range of tempos with sound presets
-- track controls: mute, volume knob, sequencer steps, sound selection
-- master controls: play, pause, add new tracks, adjust tempo
-- responsive layout -- header, footer, control bar, tracks, sequencer
 
 ###### Upcoming features:
 - allow for tempo changes during playback
