@@ -4,6 +4,7 @@
             <span class="volume-knob-wrapper">
                 <input class="volume-knob" id="volume-knob-{{_id}}" type="range" min="0" max="10" data-width="40" 
                 data-height="40" data-angleOffset="220" data-angleRange="280">
+                <span class="knob-label">VOL</span>
             </span>
             <select class="sound-select" id="{{_id}}">
                 <option value="{{path}}"><h2 class="sound-name">{{name}}</h2></option>
@@ -19,7 +20,11 @@
                 <table class="sequencer-table">
                     <tr>
                         {{#each sequenceSteps}}
-                            <td><button class="sequence-step {{#if stepIsChecked @index ../_id}}active{{else}}inactive{{/if}}" name="{{@index}}" id="{{../_id}}"></button></td>
+                            <td><button 
+                                class="sequence-step {{#if stepIsChecked @index ../_id}}active{{else}}inactive{{/if}}
+                                {{#if timeStepIsActive @index}}time-active{{else}}time-inactive{{/if}}"
+                                name="{{@index}}" id="{{../_id}}">
+                            </button></td>
                         {{/each}}
                     </tr>
                 </table>

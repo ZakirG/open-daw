@@ -1,4 +1,8 @@
 var sequenceIsPlaying;
+var playModeTracker = new Tracker.Dependency();
+
+var timeState = [1, 0, 0, 0, 0, 0, 0, 0];
+var timeStateTracker = new Tracker.Dependency();
 
 Template.application.onRendered(function(){    
    sequenceIsPlaying = false;
@@ -10,13 +14,22 @@ Template.application.helpers({
     }
 });
 
+Template.controlFrame.helpers({
+    inPlayMode: function(){
+        playModeTracker.depend();
+        return sequenceIsPlaying;
+    }
+});
+
 Template.controlFrame.events({
     'click #play': function(){
         sequenceIsPlaying = true;
+        playModeTracker.changed();
         playSequence();
     },
     'click #pause': function(){
         sequenceIsPlaying = false;
+        playModeTracker.changed();
     },
     'click #add-track' : function() {
         SelectedSounds.insert(strongKick); // When a user creates a new track, the kick will be the default sound.
@@ -39,6 +52,10 @@ function playSequence() {
 
 // Plays all tracks with events at the given step and set up the next step
 function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
+    timeState = Array.apply(null, Array(8)).map(Number.prototype.valueOf,0); // array of 8 zeros for a default sequence;
+    timeState[sequenceConfiguration.beatNumber] = 1;
+    timeStateTracker.changed();
+    
     if(!sequenceIsPlaying) {
         return;
     }
@@ -83,6 +100,11 @@ Template.track.helpers({
     },
     stepIsChecked: function(stepNumber, trackId) {
         return !!(SelectedSounds.findOne({_id : trackId}).sequenceSteps[stepNumber]);
+    },
+    timeStepIsActive: function(stepNumber){
+        timeStateTracker.depend();
+        playModeTracker.depend();
+        return timeState[stepNumber] && sequenceIsPlaying;
     }
 });
 

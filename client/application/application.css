@@ -9,25 +9,31 @@
 
 #control-bar {
     width:100%;
-    padding:20px 40px;
+    padding:17px 40px;
     margin:auto;
     z-index:2;
 }
 
 .large-button {
     font-size: 24px;
-    padding:0 10px;
-    margin:0 5px;
-    -webkit-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
-            box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+    border: solid 2px rgba(0,0,0,0);
+    padding:0 8px;
+    margin:0px 5px;
+    -webkit-transition: border .2s;
+            transition: border .2s;
+}
+
+.large-button:hover {
+    border: solid 2px rgba(0,0,0,0.5);
 }
 
 .large-button, .header-input-box {
-    border:0;
     border-radius:3px;
     opacity:0.7;
     background:white;
     color:rgba(0,0,0, 1);
+    -webkit-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+            box-shadow:0px 0px 10px rgba(0,0,0,0.2);
 }
 
 .header-input-box {
@@ -37,10 +43,39 @@
     margin:0 5px;
     position:relative;
     top:-1px;
+    border: solid 2px rgba(0,0,0,0);
 }
 
 .header-input-label {
     position:relative;
     left:-42px;
-    top:20px;
+    top:21px;
+}
+
+#timing-display-wrapper  {
+    width:95%;
+    padding:0 10px;
+    margin:0px auto 0 auto;
+    position:relative;
+    top:-5px;
+}
+
+#timing-display {
+    height:20px;
+    padding:10px;
+    /* background:gray; */
+}
+
+#timing-display .sequencer-wrapper {
+    border:0;
+    height:20px;
+    background:rgba(255, 255, 255, 0.4)
+}
+
+#time-marker {
+    background-color:yellow;
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    
 }
