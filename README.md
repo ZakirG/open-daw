@@ -9,6 +9,7 @@
 - basic sequencer functionality: program rhythms at a range of tempos with sound presets
 - track controls: mute, volume knob, sequencer steps, sound selection
 - master controls: play, pause, add new tracks, adjust tempo
+- tempo can be changed during playback
 - responsive layout, works well on iPhone 5 (320px)
 
 ##### Build instructions:
@@ -22,7 +23,6 @@ You may be prompted to install additional packages.
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
 ##### Upcoming features:
-- allow for tempo changes during playback
 - master volume control
 - sequences can be bounced & exported to wav files
 - allow for user-uploaded sounds for sequencing

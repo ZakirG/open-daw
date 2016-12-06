@@ -70,6 +70,8 @@ function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
         }
     });
     sequenceConfiguration.beatNumber++;
+    
+    // If the user is not currently editing the tempo, update the tempo
     if(!$('#tempo').is(":focus")) {
         sequenceConfiguration.timeBetweenSteps = calculateStepDelayFromTempo();
     }
