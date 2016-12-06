@@ -23,7 +23,6 @@ You may be prompted to install additional packages.
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
 ##### Upcoming features:
-- master volume control
 - sequences can be bounced & exported to wav files
 - allow for user-uploaded sounds for sequencing
 
