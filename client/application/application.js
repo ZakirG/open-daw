@@ -36,11 +36,16 @@ Template.controlFrame.events({
     } 
 });
 
-// Plays the user-generated sequence
-function playSequence() {
-    var bpm = $('#tempo').val();
+function calculateStepDelayFromTempo(){
+     var bpm = $('#tempo').val();
     // We treat each sequence step as a 16th note
     var timeBetweenSteps = ((60 / bpm) * 1000) / 2; // in milliseconds
+    return timeBetweenSteps;
+}
+
+// Plays the user-generated sequence
+function playSequence() {
+    var timeBetweenSteps = calculateStepDelayFromTempo();
     sequenceConfiguration = {
         beatNumber : 0, 
         totalNumberOfBeats : 8,
@@ -65,6 +70,10 @@ function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
         }
     });
     sequenceConfiguration.beatNumber++;
+    if(!$('#tempo').is(":focus")) {
+        sequenceConfiguration.timeBetweenSteps = calculateStepDelayFromTempo();
+    }
+    
     if(sequenceConfiguration.beatNumber >= sequenceConfiguration.totalNumberOfBeats) { 
         sequenceConfiguration.beatNumber = 0;
     }
@@ -73,6 +82,7 @@ function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
         , sequenceConfiguration.timeBetweenSteps
     );
 }
+
 // Plays the sound associated with a given track
 function playSound(selectedSoundId) {
     var audioTag = $('#audio-' + selectedSoundId);

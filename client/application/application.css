@@ -49,7 +49,12 @@
 .header-input-label {
     position:relative;
     left:-42px;
-    top:21px;
+    top:24px;
+}
+
+.header-input-label#add-track-label {
+    left:-55px;
+    margin-right:-60px;
 }
 
 #timing-display-wrapper  {
