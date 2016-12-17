@@ -31,7 +31,9 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 - allow for user-uploaded audio tracks with preview waveforms
 - ability to download/reupload sequencer state as a text file of human-readable metadata
 - integration of <a href="http://sox.sourceforge.net/Docs/FAQ" target="_blank">SoX</a> for VST-like track effects
-
+- an undo button, a redo button
+- an undo history with human-readable action descriptions
+- keyboard shortcuts
 
 Project started 11/29/2016.
 

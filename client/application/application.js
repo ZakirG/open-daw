@@ -4,6 +4,9 @@ var playModeTracker = new Tracker.Dependency();
 var timeState = [1, 0, 0, 0, 0, 0, 0, 0];
 var timeStateTracker = new Tracker.Dependency();
 
+var inSoloMode = false;
+var inSoloModeTracker = new Tracker.Dependency();
+
 Template.application.onRendered(function(){    
    sequenceIsPlaying = false;
 });
@@ -65,7 +68,7 @@ function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
         return;
     }
     selectedSoundsCursor.forEach(function(track){
-        if(track.sequenceSteps[sequenceConfiguration.beatNumber] && !track.muted) {
+        if(track.sequenceSteps[sequenceConfiguration.beatNumber] && !trackIsDisabled(track)) {
             playSound(track._id);
         }
     });
@@ -83,6 +86,12 @@ function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
         (tempoStep).bind(undefined, SelectedSounds.find(), sequenceConfiguration) 
         , sequenceConfiguration.timeBetweenSteps
     );
+}
+
+// Returns true if track playback has been temporarily disabled by solo/mute
+function trackIsDisabled(selectedSound) {
+    inSoloModeTracker.depend();
+    return selectedSound.muted || ( !selectedSound.soloed && inSoloMode );
 }
 
 // Plays the sound associated with a given track
@@ -130,7 +139,7 @@ Template.track.events({
         newSequenceSteps[event.target.name] = 1 - newSequenceSteps[event.target.name];
         
         // Play the sound the user selected, if it was toggled to true
-        if(newSequenceSteps[event.target.name] && !selectedSound.muted) {
+        if(newSequenceSteps[event.target.name] && !trackIsDisabled(selectedSound)) {
             playSound(event.target.id);
         }
         
@@ -139,6 +148,19 @@ Template.track.events({
     'click .mute-button': function(event){
         var newMuteState = !!!SelectedSounds.findOne({_id : event.target.id}).muted;
         SelectedSounds.update({_id : event.target.id} , {$set : {'muted' : newMuteState}});
+    },
+    'click .solo-button': function(event){
+        var newSoloState = !!!SelectedSounds.findOne({_id : event.target.id}).soloed;
+        SelectedSounds.update({_id : event.target.id} , {$set : {'soloed' : newSoloState}});
+        
+        if (!inSoloMode) { 
+            inSoloMode = true;
+            inSoloModeTracker.changed();
+        }
+        else {
+            updateSoloMode();
+        }
+        
     },
     'change .sound-select': function(event){
         var newSound = AllSounds.findOne({'path' : $(event.target).val()});
@@ -149,3 +171,14 @@ Template.track.events({
     }
 });
 
+// Helpers to be moved to a new file:
+// Checks if solo mode should be turned off (none of the tracks are soloed)
+function updateSoloMode(){
+    console.log('updateSoloMode called');
+    var soundsSoloed = SelectedSounds.find({'soloed' : true}).count();
+    if(soundsSoloed == 0) {
+        inSoloMode = false;
+        inSoloModeTracker.changed();
+        console.log('soloMode now false');
+    }
+}
