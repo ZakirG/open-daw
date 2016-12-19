@@ -7,7 +7,7 @@
 
 ##### Features:
 - basic sequencer functionality: program rhythms at a range of tempos with sound presets
-- track controls: mute, volume knob, sequencer steps, sound selection
+- track controls: mute, solo, volume knob, sequencer steps, sound selection
 - master controls: play, pause, add new tracks, adjust tempo
 - tempo can be changed during playback
 - responsive layout, works well on iPhone 5 (320px)
@@ -23,11 +23,10 @@ You may be prompted to install additional packages.
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
 ##### Upcoming features:
-- sequences can be bounced & exported to wav files
+- integration of Web Audio API for easy master volume, track panning, and sequence export to wav
 - allow for user-uploaded sounds for sequencing
 
 ##### Feature goals for v2.0:
-- panning knobs on individual tracks
 - allow for user-uploaded audio tracks with preview waveforms
 - ability to download/reupload sequencer state as a text file of human-readable metadata
 - integration of <a href="http://sox.sourceforge.net/Docs/FAQ" target="_blank">SoX</a> for VST-like track effects

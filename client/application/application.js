@@ -96,10 +96,8 @@ function trackIsDisabled(selectedSound) {
 
 // Plays the sound associated with a given track
 function playSound(selectedSoundId) {
-    var audioTag = $('#audio-' + selectedSoundId);
-    if (!audioTag.paused) {
-        audioTag.prop('currentTime', 0);
-    }
+    var audioTag = audioTagFor(selectedSoundId)
+    audioTag.prop('currentTime', 0);
     audioTag.trigger('play');
 }
 
@@ -172,13 +170,15 @@ Template.track.events({
 });
 
 // Helpers to be moved to a new file:
+function audioTagFor(selectedSoundId) {
+    return $('#audio-' + selectedSoundId);
+}
+
 // Checks if solo mode should be turned off (none of the tracks are soloed)
 function updateSoloMode(){
-    console.log('updateSoloMode called');
     var soundsSoloed = SelectedSounds.find({'soloed' : true}).count();
     if(soundsSoloed == 0) {
         inSoloMode = false;
         inSoloModeTracker.changed();
-        console.log('soloMode now false');
     }
 }
