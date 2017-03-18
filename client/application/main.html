@@ -27,6 +27,11 @@
                     
                     <button class="large-button" id="add-track" ><span class="glyphicon glyphicon-plus"></span></button><label class="header-input-label" id="add-track-label">ADD TRACK</label>
                     <input class="header-input-box" id="tempo" value="80"/><label class="header-input-label" for="tempo">BPM</label>
+                    <span class="master-volume-knob-wrapper">
+                        <input class="volume-knob" id="master-volume-knob" type="range" min="0" max="10" data-width="40" 
+                        data-height="40" data-angleOffset="220" data-angleRange="280">
+                        <span class="knob-label">OUTPUT VOL</span>
+                    </span>
                 </div>
             </header>
             {{> application}}

@@ -8,12 +8,13 @@ var inSoloMode = false;
 var inSoloModeTracker = new Tracker.Dependency();
 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var masterSource = new MasterSource(audioCtx);
 var audioSources = {};
 
 Template.application.onRendered(function(){    
    sequenceIsPlaying = false;
    SelectedSounds.find().forEach(function(sound){
-        audioSources[sound._id] = new Source(audioCtx, audioTagFor(sound._id)[0]);         
+        audioSources[sound._id] = new Source(audioCtx, audioTagFor(sound._id)[0], masterSource);  
     });
 });
 
@@ -21,6 +22,13 @@ Template.application.helpers({
     selectedSounds: function(){
         return SelectedSounds.find();
     }
+});
+
+Template.controlFrame.onRendered(function(){
+    new Knob(document.getElementById('master-volume-knob'), new Ui.P2());
+    $('input#master-volume-knob').change(function(){
+        updateMasterVolume($(this).val());
+    });
 });
 
 Template.controlFrame.helpers({
@@ -103,13 +111,24 @@ function trackIsDisabled(selectedSound) {
 
 // Plays the sound associated with a given track
 function playSound(selectedSoundId) {
-    var audioTag = audioTagFor(selectedSoundId)
-    audioTag.prop('currentTime', 0);
-    audioTag.trigger('play');
+    if(audioSources[selectedSoundId].gainNode.gain.value > 0 && masterSource.gainNode.gain.value > 0) {
+        var audioTag = audioTagFor(selectedSoundId);
+        audioTag.prop('currentTime', 0);
+        audioTag.trigger('play');
+    }
 }
 
 function updateSoundVolume(selectedSoundId, newVolume){
-    audioSources[selectedSoundId].gainNode.gain.value = newVolume;
+    audioSources[selectedSoundId].gainNode.gain.value = newVolume/10;
+}
+
+function updateMasterVolume(newVolume){
+    if(newVolume > 3) {
+        masterSource.gainNode.gain.value = newVolume/5;
+    }
+    else {
+        masterSource.gainNode.gain.value = newVolume/200;
+    }
 }
 
 Template.track.onRendered(function(){
