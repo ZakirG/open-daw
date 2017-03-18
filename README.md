@@ -37,4 +37,3 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 Project started 11/29/2016.
 
 Thank you to <a href="https://github.com/eskimoblood/jim-knopf" target="_blank">eskimoblood</a> for their knob control library, used in this application.
-

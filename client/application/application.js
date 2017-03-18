@@ -7,8 +7,14 @@ var timeStateTracker = new Tracker.Dependency();
 var inSoloMode = false;
 var inSoloModeTracker = new Tracker.Dependency();
 
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var audioSources = {};
+
 Template.application.onRendered(function(){    
    sequenceIsPlaying = false;
+   SelectedSounds.find().forEach(function(sound){
+        audioSources[sound._id] = new Source(audioCtx, audioTagFor(sound._id)[0]);         
+    });
 });
 
 Template.application.helpers({
@@ -35,7 +41,8 @@ Template.controlFrame.events({
         playModeTracker.changed();
     },
     'click #add-track' : function() {
-        SelectedSounds.insert(strongKick); // When a user creates a new track, the kick will be the default sound.
+        var newSound = SelectedSounds.insert(strongKick); // When a user creates a new track, the kick will be the default sound.
+        audioSources[newSound] = new Source(audioCtx, audioTagFor(newSound)[0]);
     } 
 });
 
@@ -102,7 +109,7 @@ function playSound(selectedSoundId) {
 }
 
 function updateSoundVolume(selectedSoundId, newVolume){
-    $('audio#audio-' + selectedSoundId).prop('volume',  newVolume/10);
+    audioSources[selectedSoundId].gainNode.gain.value = newVolume;
 }
 
 Template.track.onRendered(function(){
