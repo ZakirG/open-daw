@@ -11,6 +11,7 @@
 - master controls: play, pause, add new tracks, adjust tempo
 - tempo can be changed during playback
 - responsive layout, works well on iPhone 5 (320px)
+- an extensible design, with the help of the Web Audio API
 
 ##### Build instructions:
 Install <a href="https://www.meteor.com/" target="_blank">Meteor</a> and then run
