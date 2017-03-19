@@ -1,6 +1,6 @@
 <template name="track">
     <div class="row track {{#if muted}} muted {{else}} {{/if}}">
-        <div class="track-controls col-sm-5 col-xs-12">
+        <div class="track-controls col-sm-6 col-xs-12">
             <span class="volume-knob-wrapper">
                 <input class="volume-knob" id="volume-knob-{{_id}}" type="range" min="0" max="10" data-width="40" 
                 data-height="40" data-angleOffset="220" data-angleRange="280">
@@ -17,11 +17,10 @@
                     <option value="{{path}}"><h2 class="sound-name">{{name}}</h2></option>
                 {{/each}}
             </select>
-            <button class="text-button mute-button {{#if muted}}active{{else}}inactive{{/if}}" id="{{_id}}">M<span class="hidden-sm hidden-xs">UTE</span></button>
-            <button class="text-button solo-button {{#if soloed}}active{{else}}inactive{{/if}}" id="{{_id}}">S<span class="hidden-sm hidden-xs">OLO</span></button>
-<!--             <span class="track-light">{{trackIsPlaying}}</span> -->
+            <button class="text-button mute-button {{#if muted}}active{{else}}inactive{{/if}}" id="{{_id}}">M<span class="hidden-md hidden-sm hidden-xs">UTE</span></button>
+            <button class="text-button solo-button {{#if soloed}}active{{else}}inactive{{/if}}" id="{{_id}}">S<span class="hidden-md hidden-sm hidden-xs">OLO</span></button>
         </div>
-        <div class="track-sequencer col-sm-7 col-xs-12">
+        <div class="track-sequencer col-sm-6 col-xs-12">
             <div class="sequencer-wrapper">
                 <table class="sequencer-table">
                     <tr>
