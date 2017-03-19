@@ -122,6 +122,10 @@ function updateSoundVolume(selectedSoundId, newVolume){
     audioSources[selectedSoundId].gainNode.gain.value = newVolume/10;
 }
 
+function updateSoundPan(selectedSoundId, newPan){
+    audioSources[selectedSoundId].panNode.pan.value = newPan/10;
+}
+
 function updateMasterVolume(newVolume){
     if(newVolume > 3) {
         masterSource.gainNode.gain.value = newVolume/5;
@@ -136,6 +140,10 @@ Template.track.onRendered(function(){
     new Knob(document.getElementById('volume-knob-' + selectedSoundId), new Ui.P2());
     $('input#volume-knob-' + selectedSoundId).change(function(){
         updateSoundVolume(selectedSoundId, $(this).val());
+    });
+    new Knob(document.getElementById('pan-knob-' + selectedSoundId), new Ui.P2());
+    $('input#pan-knob-' + selectedSoundId).change(function(){
+        updateSoundPan(selectedSoundId, $(this).val());
     });
 });
 

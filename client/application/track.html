@@ -6,6 +6,11 @@
                 data-height="40" data-angleOffset="220" data-angleRange="280">
                 <span class="knob-label">VOL</span>
             </span>
+            <span class="pan-knob-wrapper">
+                <input class="pan-knob" id="pan-knob-{{_id}}" type="range" min="-10" max="10" data-width="40" 
+                data-height="40" data-angleOffset="220" data-angleRange="280">
+                <span class="knob-label">PAN</span>
+            </span>
             <select class="sound-select" id="{{_id}}">
                 <option value="{{path}}"><h2 class="sound-name">{{name}}</h2></option>
                 {{#each otherSounds path}}

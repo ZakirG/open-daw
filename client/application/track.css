@@ -147,14 +147,14 @@ button.sequence-step.time-active {
     color:#c3c3c3;
 }
 
-.volume-knob-wrapper {
+.volume-knob-wrapper, .pan-knob-wrapper {
     display:inline-block;
     position:relative;
     top:15px;
     margin-right:15px;
 }
 
-.volume-knob-wrapper .knob-label {
+.volume-knob-wrapper .knob-label, .pan-knob-wrapper .knob-label {
     font-size:8px;
     font-weight:bold;
     position:relative;
@@ -189,6 +189,10 @@ button.sequence-step.time-active {
 
 .p2 path:first-child {
   fill: #00CD00;
+}
+
+.pan-knob-wrapper .p2 path:first-child {
+  fill: #00E1FF;
 }
 
 .p2 rect {
