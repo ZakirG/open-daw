@@ -106,8 +106,8 @@ table.sequencer-table td:nth-child(4n+0) {
     height:20px;
     border-radius:5px;
     display:inline-block;
-    -webkit-transition:-webkit-transform .2s;
-            transition:transform .2s;
+    -webkit-transition:-webkit-transform .3s;
+            transition:transform .3s;
 }
 
 button.sequence-step:hover {
@@ -126,8 +126,8 @@ button.sequence-step.inactive {
 }
 
 button.sequence-step.time-active {
-    -webkit-transform:scale(1.15);
-            transform:scale(1.15);
+    -webkit-transform:scale(1.3);
+            transform:scale(1.3);
 }
 
 .mute-button.active {
@@ -163,8 +163,6 @@ button.sequence-step.time-active {
     color:gray;
 }
 
-
-
 /* Volume knob settings, credit to http://eskimoblood.github.io/jim-knopf/*/
 .p2 path {
   stroke: none;
@@ -184,3 +182,10 @@ button.sequence-step.time-active {
   fill: black;
 }
 
+.solo-dimmed {
+    opacity:0.4;
+}
+
+.muted-track {
+    opacity:0.4;
+}

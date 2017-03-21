@@ -1,5 +1,5 @@
 <template name="track">
-    <div class="row track {{#if muted}} muted {{else}} {{/if}}">
+    <div class="row track {{#if muted}} muted-track {{else}} {{/if}} {{#if soloDimmedTrack}} solo-dimmed {{else}} {{/if}}">
         <div class="track-controls col-sm-6 col-xs-12">
             <span class="volume-knob-wrapper">
                 <input class="volume-knob" id="volume-knob-{{_id}}" type="range" min="0" max="10" data-width="40" 
