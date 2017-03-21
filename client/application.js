@@ -123,6 +123,10 @@ Template.track.helpers({
         timeStateTracker.depend();
         playModeTracker.depend();
         return timeState[stepNumber] && sequenceIsPlaying;
+    },
+    glowSolo: function(){
+        inSoloModeTracker.depend();
+        return this.soloed && inSoloMode;
     }
 });
 
@@ -157,7 +161,6 @@ Template.track.events({
         else {
             updateSoloMode();
         }
-        
     },
     'change .sound-select': function(event){
         var newSound = AllSounds.findOne({'path' : $(event.target).val()});

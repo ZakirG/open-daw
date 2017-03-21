@@ -1,0 +1,12 @@
+#application {
+    padding:0;
+    text-align:center;
+    height:470px;
+    width:100%;
+    margin:-2px auto 0px auto;
+    overflow:auto;
+}
+
+.align-right {
+    text-align:right;
+}

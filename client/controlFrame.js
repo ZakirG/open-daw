@@ -19,7 +19,7 @@ Template.controlFrame.onRendered(function(){
     dropZone.ondrop = function(e) {
         e.preventDefault();
         this.className = 'upload-drop-zone';
-        uploadedFiles.push(e.dataTransfer.files[0]);
+        uploadedFiles = [e.dataTransfer.files[0]];
         addTrackTracker.changed();
     }
 
@@ -43,6 +43,10 @@ Template.controlFrame.helpers({
         playModeTracker.depend();
         return sequenceIsPlaying;
     },
+    inSoloMode: function(){
+        inSoloModeTracker.depend();
+        return inSoloMode;
+    },
     allSounds: function(){
         return AllSounds.find();
     },
@@ -65,6 +69,10 @@ Template.controlFrame.events({
     'click #pause': function(){
         sequenceIsPlaying = false;
         playModeTracker.changed();
+    },
+    'click #solo-mode-toggle': function(){
+        inSoloMode = !inSoloMode;
+        inSoloModeTracker.changed();
     },
     'click .radio-panel': function(event){
          if(event.target.id == 'upload-tab') {
@@ -109,14 +117,15 @@ Template.controlFrame.events({
             var userSoundId = SelectedSounds.insert(userSound);
             audioSources[userSoundId] = new Source(audioCtx, audioTagFor(userSoundId)[0], masterSource);
             uploadedFiles = [];
+            $('#js-upload-files').val(null)
             $('#addTrackModal').modal('hide');
-            
+            addTrackTracker.changed();
         }
     },
     'change input#js-upload-files': function(event){
         var files = document.getElementById('js-upload-files').files;
         if(files.length > 0) {
-            uploadedFiles.push(files[0]);
+            uploadedFiles = [files[0]];
         }
         addTrackTracker.changed();
     }
