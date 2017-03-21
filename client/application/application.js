@@ -1,17 +1,17 @@
-var sequenceIsPlaying;
-var playModeTracker = new Tracker.Dependency();
+sequenceIsPlaying = false;
+playModeTracker = new Tracker.Dependency();
 
-var timeState = [1, 0, 0, 0, 0, 0, 0, 0];
-var timeStateTracker = new Tracker.Dependency();
+timeState = [1, 0, 0, 0, 0, 0, 0, 0];
+timeStateTracker = new Tracker.Dependency();
 
-var inSoloMode = false;
-var inSoloModeTracker = new Tracker.Dependency();
+inSoloMode = false;
+inSoloModeTracker = new Tracker.Dependency();
 
-var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-var masterSource = new MasterSource(audioCtx);
-var audioSources = {};
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+masterSource = new MasterSource(audioCtx);
+audioSources = {};
 
-var userSounds = {};
+userSounds = {};
 
 Template.application.onRendered(function(){    
    sequenceIsPlaying = false;
@@ -26,121 +26,6 @@ Template.application.helpers({
     }
 });
 
-var uploadedFiles = [];
-    
-Template.controlFrame.onRendered(function(){
-    new Knob(document.getElementById('master-volume-knob'), new Ui.P2());
-    $('input#master-volume-knob').change(function(){
-        updateMasterVolume($(this).val());
-    });
-    
-    var dropZone = document.getElementById('drop-zone');
-    var uploadForm = document.getElementById('js-upload-form');
-    
-    dropZone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = 'upload-drop-zone';
-        uploadedFiles.push(e.dataTransfer.files[0]);
-        addTrackTracker.changed();
-    }
-
-    dropZone.ondragover = function() {
-        this.className = 'upload-drop-zone drop';
-        return false;
-    }
-
-    dropZone.ondragleave = function() {
-        this.className = 'upload-drop-zone';
-        return false;
-    }
-});
-
-var addTrackTracker = new Tracker.Dependency();
-
-Template.controlFrame.helpers({
-    inPlayMode: function(){
-        playModeTracker.depend();
-        return sequenceIsPlaying;
-    },
-    allSounds: function(){
-        return AllSounds.find();
-    },
-    addTrackFormValid: function(){
-        addTrackTracker.depend();
-        var soundSource = $('#add-track-form #soundSource').val();
-        var soundType = $('#add-track-form #soundType').val();
-        if(soundType == 'preset' && soundSource != null && soundSource != "") return true;
-        if(soundType == 'user-upload' && uploadedFiles.length > 0) return true;
-        return false;
-    }
-});
-
-Template.controlFrame.events({
-    'click #play': function(){
-        sequenceIsPlaying = true;
-        playModeTracker.changed();
-        playSequence();
-    },
-    'click #pause': function(){
-        sequenceIsPlaying = false;
-        playModeTracker.changed();
-    },
-    'click .radio-panel': function(event){
-         if(event.target.id == 'upload-tab') {
-            $('#add-track-form #soundType').val('user-upload');
-            $('#add-track-form #soundSource').val("");
-         }
-         else if(event.target.id == 'preset-tab') {
-            $('#add-track-form #soundType').val('preset');
-            $('#add-track-form #dLabel .dropdown-text').prop('innerText', 'Select a preset');
-         }
-         addTrackTracker.changed();
-    },
-    'click li.sound-preset': function(event){
-        $('#add-track-form #dLabel .dropdown-text').prop('innerText', event.target.text);
-        $('#add-track-form #soundSource').val(event.target.id);
-        $('#add-track-form #soundType').val('preset');
-        addTrackTracker.changed();
-    },
-    'click #create-track-submit' : function(event) {
-        event.preventDefault();
-        var soundType = $('#add-track-form #soundType').val();
-        if(soundType == 'preset') {
-            var soundSource = $('#add-track-form #soundSource').val();
-            var soundChosen = AllSounds.findOne({'_id' : soundSource});
-            var newSound = SelectedSounds.insert(soundChosen);
-            audioSources[newSound] = new Source(audioCtx, audioTagFor(newSound)[0], masterSource);
-            $('#addTrackModal').modal('hide');
-            $('#add-track-form #dLabel .dropdown-text').prop('innerText', 'Select a preset');
-            $('#add-track-form #soundSource').val("");
-            $('#add-track-form #soundType').val("");
-            addTrackTracker.changed();
-        }
-        else {
-            var blob = window.URL || window.webkitURL;
-            fileURL = blob.createObjectURL(uploadedFiles[0]);
-            
-            var userSound = { 'type' : 'userUploadedSound', 
-                            'name' : uploadedFiles[0].name, 
-                            'sequenceSteps' : defaultSequence,
-                            'path' : fileURL };
-            
-            var userSoundId = SelectedSounds.insert(userSound);
-            audioSources[userSoundId] = new Source(audioCtx, audioTagFor(userSoundId)[0], masterSource);
-            uploadedFiles = [];
-            $('#addTrackModal').modal('hide');
-            
-        }
-    },
-    'change input#js-upload-files': function(event){
-        var files = document.getElementById('js-upload-files').files;
-        if(files.length > 0) {
-            uploadedFiles.push(files[0]);
-        }
-        addTrackTracker.changed();
-    }
-});
-
 function calculateStepDelayFromTempo(){
      var bpm = $('#tempo').val();
     // We treat each sequence step as a 16th note
@@ -149,7 +34,7 @@ function calculateStepDelayFromTempo(){
 }
 
 // Plays the user-generated sequence
-function playSequence() {
+playSequence = function() {
     var timeBetweenSteps = calculateStepDelayFromTempo();
     sequenceConfiguration = {
         beatNumber : 0, 
@@ -161,7 +46,7 @@ function playSequence() {
 }
 
 // Plays all tracks with events at the given step and set up the next step
-function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
+tempoStep = function(selectedSoundsCursor, sequenceConfiguration) {
     timeState = Array.apply(null, Array(8)).map(Number.prototype.valueOf,0); // array of 8 zeros for a default sequence;
     timeState[sequenceConfiguration.beatNumber] = 1;
     timeStateTracker.changed();
@@ -191,13 +76,13 @@ function tempoStep(selectedSoundsCursor, sequenceConfiguration) {
 }
 
 // Returns true if track playback has been temporarily disabled by solo/mute
-function trackIsDisabled(selectedSound) {
+trackIsDisabled = function(selectedSound) {
     inSoloModeTracker.depend();
     return selectedSound.muted || ( !selectedSound.soloed && inSoloMode );
 }
 
 // Plays the sound associated with a given track
-function playSound(selectedSoundId, selectedSoundType) {
+playSound = function(selectedSoundId, selectedSoundType) {
     if(audioSources[selectedSoundId].gainNode.gain.value > 0 && masterSource.gainNode.gain.value > 0) {
         
             var audioTag = audioTagFor(selectedSoundId);
@@ -213,15 +98,6 @@ function updateSoundVolume(selectedSoundId, newVolume){
 
 function updateSoundPan(selectedSoundId, newPan){
     audioSources[selectedSoundId].panNode.pan.value = newPan/10;
-}
-
-function updateMasterVolume(newVolume){
-    if(newVolume > 3) {
-        masterSource.gainNode.gain.value = newVolume/5;
-    }
-    else {
-        masterSource.gainNode.gain.value = newVolume/200;
-    }
 }
 
 Template.track.onRendered(function(){
@@ -293,15 +169,15 @@ Template.track.events({
 });
 
 // Helpers to be moved to a new file:
-function audioTagFor(selectedSoundId) {
+audioTagFor = function(selectedSoundId) {
     return $('#audio-' + selectedSoundId);
-}
+};
 
 // Checks if solo mode should be turned off (none of the tracks are soloed)
-function updateSoloMode(){
+updateSoloMode = function(){
     var soundsSoloed = SelectedSounds.find({'soloed' : true}).count();
     if(soundsSoloed == 0) {
         inSoloMode = false;
         inSoloModeTracker.changed();
     }
-}
+};
