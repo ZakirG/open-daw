@@ -199,34 +199,3 @@ button.sequence-step.time-active {
   fill: black;
 }
 
-#addTrackModal .tab-pane {
-    border: solid 1px #e5e5e5;
-    border-radius: 3px;
-    margin:10px 0 10px 0;
-    padding:10px;
-    text-align:left;
-    height:90px;
-}
-
-#addTrackModal .dropdown-header {
-    font-size:14px;
-}
-
-#addTrackModal .panel-group {
-    margin-bottom:0;
-}
-
-.btn {
-    -webkit-transition:background-color .4s;
-       -moz-transition:background-color .4s;
-            transition:background-color .4s;
-}
-
-#addTrackModal #dLabel {
-    background-color:white;
-    border:solid 1px #ccc;
-}
-
-#addTrackModal #dLabel:hover, #addTrackModal #dLabel:focus {
-    background-color: #e6e6e6;
-}

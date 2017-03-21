@@ -105,3 +105,59 @@ a:active, a:focus, a:hover {
         padding:20px 70px;
     }
 }
+
+.upload-drop-zone {
+  height: 50px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 50px;
+  text-align: center
+}
+
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+
+#addTrackModal .tab-pane {
+    border: solid 1px #e5e5e5;
+    border-radius: 3px;
+    margin:10px 0 10px 0;
+    padding:10px;
+    text-align:left;
+    height:90px;
+}
+
+#addTrackModal .tab-pane#sound-upload{
+    height:170px;
+}
+
+#addTrackModal .dropdown-header {
+    font-size:14px;
+}
+
+#addTrackModal .panel-group {
+    margin-bottom:0;
+}
+
+.btn {
+    -webkit-transition:background-color .4s;
+       -moz-transition:background-color .4s;
+            transition:background-color .4s;
+}
+
+#addTrackModal #dLabel {
+    background-color:white;
+    border:solid 1px #ccc;
+}
+
+#addTrackModal #dLabel:hover, #addTrackModal #dLabel:focus {
+    background-color: #e6e6e6;
+}

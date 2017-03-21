@@ -51,10 +51,10 @@
               <div class="modal-body">
                 <div class="panel-group" id="accordion">
                     <div id="tab" class="btn-group" data-toggle="buttons">
-                        <a href="#sound-preset-dropdown" class="btn btn-default active" data-toggle="tab">
-                            <input type="radio" value="preset" required/>Sound preset</a>
-                        <a href="#features" class="btn btn-default" data-toggle="tab">
-                            <input type="radio" value="user-upload"/>Upload an audio file</a>
+                        <a href="#sound-preset-dropdown" id="preset-tab" class="btn btn-default active radio-panel" data-toggle="tab">
+                            <input type="radio" value="preset" name="sound-type-radio" required/>Sound preset</a>
+                        <a href="#sound-upload" id="upload-tab" class="btn btn-default radio-panel" data-toggle="tab">
+                            <input type="radio" value="user-upload" name="sound-type-radio"/>Upload an audio file</a>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane active" id="sound-preset-dropdown">
@@ -75,8 +75,39 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="tab-pane" id="features">
-                            ---
+                        <div class="tab-pane" id="sound-upload">
+                            <h4>Select files from your computer</h4>
+                            
+                            
+                              
+                            <div class="form-inline">
+                              <div class="form-group">
+                                <input type="file" name="files[]" id="js-upload-files" multiple>
+                              </div>
+                             <!--  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button> -->
+                            </div>
+                              <h4>Or drag and drop files below</h4>
+                              <div class="upload-drop-zone" id="drop-zone">
+                                Just drag and drop files here
+                              </div>
+                              
+                              <!-- 
+<div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                  <span class="sr-only">60% Complete</span>
+                                </div>
+                              </div>
+ -->
+
+                              <!-- 
+                                <div class="js-upload-finished">
+                                <h3>Processed files</h3>
+                                <div class="list-group">
+                                  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+                                  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+                                </div>
+                              </div>
+ -->   
                         </div>
                         <input style="visibility:hidden;height:0;" name="soundSource" id="soundSource"/>
                         <input style="visibility:hidden;height:0;" name="soundType" id="soundType"/>
@@ -86,9 +117,9 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 {{#if addTrackFormValid}}
-                    <button type="button" class="btn btn-primary" id="create-track-submit">Create</button>
+                    <button type="button" class="btn btn-primary" id="create-track-submit">Create track</button>
                 {{else}}
-                    <button type="button" class="btn btn-primary" disabled>Create</button>
+                    <button type="button" class="btn btn-primary" disabled>Create track</button>
                 {{/if}}
               </div>
             </form>

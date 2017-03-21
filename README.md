@@ -7,11 +7,10 @@
 <img src="./public/screenshots/addTrackScreenshot.png" alt="Add Track Screenshot on Desktop" width="550"/>
 
 ##### Features:
-- sequencer functionality: program rhythms at a range of tempos with sound presets
+- sequencer functionality: program rhythms at a range of tempos with user-uploaded sounds and a selection of presets
+- responsive layout
 - track controls: mute, solo, volume/pan knobs, sequencer steps, sound selection
 - master controls: play, pause, add new tracks, adjust tempo, master volume
-- tempo can be changed during playback
-- responsive layout, works well on iPhone 5 (320px)
 
 ##### Build instructions:
 Install <a href="https://www.meteor.com/" target="_blank">Meteor</a> and then run
@@ -23,10 +22,10 @@ meteor
 You may be prompted to install additional packages. 
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
-##### Upcoming features in release 1.0:
-- allow for user-uploaded sounds for sequencing
-- finer control over time-divisions
+##### Upcoming features for release 1.0:
+- a dynamic grid to allow sequencing with eighth, 16th, and 32nd notes
 - sequence export to wav
+- UI updates and visual improvements for iPhone 5 (320px)
 
 ##### Feature goals for v2.0:
 - a midi-compatible piano roll
