@@ -25,7 +25,7 @@
                 <div class="row secondary-color" id="control-bar">
                     {{#if inPlayMode}}<button class="large-button" id="pause"><span class="glyphicon glyphicon-pause"></span></button>{{else}}<button class="large-button" id="play"><span class="glyphicon glyphicon-play"></span></button>{{/if}}
                     
-                    <button class="large-button" id="add-track" ><span class="glyphicon glyphicon-plus"></span></button><label class="header-input-label" id="add-track-label">ADD TRACK</label>
+                    <button class="large-button" id="add-track" data-toggle="modal" data-target="#addTrackModal"><span class="glyphicon glyphicon-plus"></span></button><label class="header-input-label" id="add-track-label">ADD TRACK</label>
                     <input class="header-input-box" id="tempo" value="80"/><label class="header-input-label" for="tempo">BPM</label>
                     <span class="master-volume-knob-wrapper">
                         <input class="volume-knob" id="master-volume-knob" type="range" min="0" max="10" data-width="40" 
@@ -40,4 +40,61 @@
             <h5>By <a href="https://github.com/ZakirG" target="_blank">Zakir Gowani</a>. Development still in progress.</h5>
         </footer>
     </div>
+    
+    <div class="modal fade" id="addTrackModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+            <form id="add-track-form" name="add-track-form">
+              <div class="modal-body">
+                <div class="panel-group" id="accordion">
+                    <div id="tab" class="btn-group" data-toggle="buttons">
+                        <a href="#sound-preset-dropdown" class="btn btn-default active" data-toggle="tab">
+                            <input type="radio" value="preset" required/>Sound preset</a>
+                        <a href="#features" class="btn btn-default" data-toggle="tab">
+                            <input type="radio" value="user-upload"/>Upload an audio file</a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="sound-preset-dropdown">
+                            <div class="dropdown">
+                              <!-- 
+<a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="dropdown-header">Select a preset</span>
+                              </a>
+ -->
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="dropdown-text">Select a preset</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                {{#each allSounds}}
+                                    <li class="sound-preset"><a href="#" id="{{_id}}">{{name}}</a></li>
+                                {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="features">
+                            ---
+                        </div>
+                        <input style="visibility:hidden;height:0;" name="soundSource" id="soundSource"/>
+                        <input style="visibility:hidden;height:0;" name="soundType" id="soundType"/>
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                {{#if addTrackFormValid}}
+                    <button type="button" class="btn btn-primary" id="create-track-submit">Create</button>
+                {{else}}
+                    <button type="button" class="btn btn-primary" disabled>Create</button>
+                {{/if}}
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    
+    
 </template>

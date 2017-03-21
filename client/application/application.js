@@ -29,12 +29,33 @@ Template.controlFrame.onRendered(function(){
     $('input#master-volume-knob').change(function(){
         updateMasterVolume($(this).val());
     });
+    
+    // $("#add-track-form").validate({
+//         rules: {
+//             soundSource: {
+//                 required: true,
+//                 minlength: 2
+//             }
+//         }
+//     });
 });
+
+var addTrackTracker = new Tracker.Dependency();
 
 Template.controlFrame.helpers({
     inPlayMode: function(){
         playModeTracker.depend();
         return sequenceIsPlaying;
+    },
+    allSounds: function(){
+        return AllSounds.find();
+    },
+    addTrackFormValid: function(){
+        addTrackTracker.depend();
+        var soundSource = $('#add-track-form #soundSource').val();
+        var soundType = $('#add-track-form #soundType').val();
+        if(soundType == 'preset' && soundSource != null && soundSource != "") return true;
+        return false;
     }
 });
 
@@ -48,9 +69,29 @@ Template.controlFrame.events({
         sequenceIsPlaying = false;
         playModeTracker.changed();
     },
-    'click #add-track' : function() {
-        var newSound = SelectedSounds.insert(strongKick); // When a user creates a new track, the kick will be the default sound.
-        audioSources[newSound] = new Source(audioCtx, audioTagFor(newSound)[0]);
+    'click li.sound-preset': function(event){
+        $('#add-track-form #dLabel .dropdown-text').prop('innerText', event.target.text);
+        $('#add-track-form #soundType').val('preset');
+        $('#add-track-form #soundSource').val(event.target.id);
+        addTrackTracker.changed();
+    },
+    'click #create-track-submit' : function(event) {
+        event.preventDefault();
+        var soundType = $('#add-track-form #soundType').val();
+        if(soundType == 'preset') {
+            var soundSource = $('#add-track-form #soundSource').val();
+            var soundChosen = AllSounds.findOne({'_id' : soundSource});
+            var newSound = SelectedSounds.insert(soundChosen);
+            audioSources[newSound] = new Source(audioCtx, audioTagFor(newSound)[0]);
+            $('#addTrackModal').modal('hide');
+            $('#add-track-form #dLabel .dropdown-text').prop('innerText', 'Select a preset');
+            $('#add-track-form #soundSource').val("");
+            $('#add-track-form #soundType').val("");
+            addTrackTracker.changed();
+        }
+        else {
+            
+        }
     } 
 });
 
