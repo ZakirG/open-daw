@@ -5,11 +5,10 @@
     position:relative;
     border-bottom: 2px solid rgba(0,0,0,.1);
     box-shadow: inset 0 -2px 0px rgba(255,255,255,.4);
-    width:95%;
-    padding:5px 10px;
+    width:100%;
+    padding:5px;
     margin:0px auto 0 auto;
 }
-
 
 h2.sound-name {
     display:inline-block;
@@ -188,4 +187,11 @@ button.sequence-step.time-active {
 
 .muted-track {
     opacity:0.4;
+}
+
+@media screen and (min-width:767px) {
+    .track {
+        width:95%;
+        padding:5px 10px;
+    }
 }

@@ -7,8 +7,8 @@
 <img src="./public/screenshots/addTrackScreenshot.png" alt="Add Track Screenshot on Desktop" width="550"/>
 
 ##### Features:
-- sequencer functionality: program rhythms at a range of tempos with user-uploaded sounds and a selection of presets
-- responsive layout
+- sequencer functionality: program rhythms w/ presets and user-uploaded sounds
+- responsive layout, works well on iPhone 6 (375px width)
 - track controls: mute, solo, volume/pan knobs, sequencer steps, sound selection
 - master controls: play, pause, add new tracks, adjust tempo, master volume
 
@@ -25,7 +25,8 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 ##### Upcoming features for release 1.0:
 - a dynamic grid to allow sequencing with eighth, 16th, and 32nd notes
 - sequence export to wav
-- UI updates and visual improvements for iPhone 5 (320px)
+- UI updates and visual improvements
+- sequence presets
 
 ##### Feature goals for v2.0:
 - a midi-compatible piano roll

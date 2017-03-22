@@ -86,11 +86,11 @@ playSound = function(selectedSoundId, selectedSoundType) {
     }
 }
 
-function updateSoundVolume(selectedSoundId, newVolume){
+updateSoundVolume = function(selectedSoundId, newVolume){
     audioSources[selectedSoundId].gainNode.gain.value = newVolume/10;
 }
 
-function updateSoundPan(selectedSoundId, newPan){
+updateSoundPan = function(selectedSoundId, newPan){
     audioSources[selectedSoundId].panNode.pan.value = newPan/10;
 }
 

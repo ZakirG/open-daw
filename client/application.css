@@ -7,6 +7,6 @@
     overflow:auto;
 }
 
-.align-right {
-    text-align:right;
+#application .track:last-of-type {
+    margin-bottom:120px;
 }

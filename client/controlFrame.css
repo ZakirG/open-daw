@@ -1,6 +1,6 @@
 #control-bar {
     width:100%;
-    padding:20px 40px 5px 40px;
+    padding:20px 15px 5px 15px;
     margin:auto;
     z-index:2;
 }
@@ -72,7 +72,7 @@
     color:#333;
 }
 
-#control-bar .align-right .large-button {
+#control-bar .sm-align-right .large-button {
     position:relative;
     top: -23px;
     height:36px;
@@ -86,5 +86,20 @@
 
 #solo-mode-toggle.active {
     background-color:yellow;
-    
 } 
+
+.sm-align-right {
+    text-align:left;
+    margin-top:30px;
+}
+
+@media screen and (min-width:767px) {
+    .sm-align-right {
+        text-align:right;
+        margin-top:0px;
+    }
+    #control-bar {
+        width:100%;
+        padding:20px 40px 5px 40px;
+    }
+}
