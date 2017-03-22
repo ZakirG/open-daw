@@ -1,4 +1,4 @@
-.meteor/dev_bundle
+.meteor
 .DS_Store
 MongoDB.bat
 node_modules

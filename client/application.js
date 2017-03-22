@@ -56,7 +56,7 @@ tempoStep = function(selectedSoundsCursor, sequenceConfiguration) {
     }
     selectedSoundsCursor.forEach(function(track){
         if(track.sequenceSteps[sequenceConfiguration.beatNumber] && !trackIsDisabled(track)) {
-            playSound(track._id, track.type);
+            playSound(track._id, track.path);
         }
     });
     sequenceConfiguration.beatNumber++;
@@ -76,14 +76,22 @@ tempoStep = function(selectedSoundsCursor, sequenceConfiguration) {
 }
 
 // Plays the sound associated with a given track
-playSound = function(selectedSoundId, selectedSoundType) {
-    if(audioSources[selectedSoundId].gainNode.gain.value > 0 && masterSource.gainNode.gain.value > 0) {
-        
-            var audioTag = audioTagFor(selectedSoundId);
-            audioTag.prop('currentTime', 0);
-            audioTag.trigger('play');
-        
+playSound = function(selectedSoundId, path) {
+    var finishedLoading = function(bufferList){
+        var source = audioCtx.createBufferSource(); // creates a sound source
+        //var source = audioSources[selectedSoundId].source;
+        source.buffer = bufferList[0];                    // tell the source which sound to play
+        source.connect(audioSources[selectedSoundId].gainNode);       // connect the source to the context's destination (the speakers)
+        source.start(0); 
     }
+    var bufferLoader = new BufferLoader(
+        audioCtx,
+        [
+          path
+        ],
+        finishedLoading
+        );
+    bufferLoader.load();
 }
 
 updateSoundVolume = function(selectedSoundId, newVolume){
@@ -114,3 +122,51 @@ unsoloAll = function(){
         SelectedSounds.update({_id: sound._id} ,  {$set : {'soloed' : false}});
     });
 };
+
+
+function BufferLoader(context, urlList, callback) {
+  this.context = context;
+  this.urlList = urlList;
+  this.onload = callback;
+  this.bufferList = new Array();
+  this.loadCount = 0;
+}
+
+BufferLoader.prototype.loadBuffer = function(url, index) {
+  // Load buffer asynchronously
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.responseType = "arraybuffer";
+
+  var loader = this;
+
+  request.onload = function() {
+    // Asynchronously decode the audio file data in request.response
+    loader.context.decodeAudioData(
+      request.response,
+      function(buffer) {
+        if (!buffer) {
+          alert('error decoding file data: ' + url);
+          return;
+        }
+        loader.bufferList[index] = buffer;
+        if (++loader.loadCount == loader.urlList.length)
+          loader.onload(loader.bufferList);
+      },
+      function(error) {
+        console.error('decodeAudioData error', error);
+      }
+    );
+  }
+
+  request.onerror = function() {
+    alert('BufferLoader: XHR error');
+  }
+
+  request.send();
+}
+
+BufferLoader.prototype.load = function() {
+  for (var i = 0; i < this.urlList.length; ++i)
+  this.loadBuffer(this.urlList[i], i);
+}
