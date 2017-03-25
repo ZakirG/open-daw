@@ -4,7 +4,6 @@
 
 ##### Screenshots:
 <img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="550"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
-<img src="./public/screenshots/addTrackScreenshot.png" alt="Add Track Screenshot on Desktop" width="550"/>
 
 ##### Features:
 - sequencer functionality: program rhythms w/ presets and user-uploaded sounds
@@ -39,4 +38,5 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 Project started 11/29/2016.
 
 Thank you to <a href="https://github.com/eskimoblood/jim-knopf" target="_blank">eskimoblood</a> for their knob control library, used in this application.
+
 Thank you to <a href="https://github.com/cwilso/" target="_blank">cwilso</a> for inspiration on using Web Workers for <a href="https://github.com/cwilso/MIDIDrums/">note scheduling functionality in a drum sequencer.</a> 
