@@ -49,7 +49,7 @@ Template.track.events({
         
         // Play the sound the user selected, if it was toggled to true
         if(newSequenceSteps[event.target.name] && !trackIsDisabled(selectedSound)) {
-            playSound(event.target.id, selectedSound.path);
+            playSound(event.target.id, selectedSound.path, 0);
         }
         
         SelectedSounds.update({_id : event.target.id} , {$set : {'sequenceSteps' : newSequenceSteps}});

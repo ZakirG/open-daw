@@ -3,10 +3,10 @@
     -webkit-transition:opacity .2s, background-color .1s;
             transition:opacity .2s, background-color .1s;
     position:relative;
-    border-bottom: 2px solid rgba(0,0,0,.1);
-    box-shadow: inset 0 -2px 0px rgba(255,255,255,.4);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    /* box-shadow: inset 0 -2px 0px rgba(255,255,255,.4); */
     width:100%;
-    padding:5px;
+    padding:0px;
     margin:0px auto 0 auto;
 }
 
@@ -97,6 +97,7 @@ table.sequencer-table td:nth-child(4n+0) {
     border:solid #ccc 2px;
     position:relative;
     top:-10px;
+    width:120px;
 }
 
 .sequence-step {
@@ -150,7 +151,7 @@ button.sequence-step.time-active {
     display:inline-block;
     position:relative;
     top:15px;
-    margin-right:15px;
+    margin-right:10px;
 }
 
 .volume-knob-wrapper .knob-label, .pan-knob-wrapper .knob-label {
@@ -189,9 +190,16 @@ button.sequence-step.time-active {
     opacity:0.4;
 }
 
+@media screen and (min-width:480px) and (max-width:767px) {
+    .track {
+        width:97%;
+        padding:0;
+    }
+}
+
 @media screen and (min-width:767px) {
     .track {
-        width:95%;
-        padding:5px 10px;
+        width:96%;
+        padding:0;
     }
 }

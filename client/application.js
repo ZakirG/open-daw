@@ -1,6 +1,8 @@
 sequenceIsPlaying = false;
 playModeTracker = new Tracker.Dependency();
 
+schedulingWorker = null;
+
 timeState = [1, 0, 0, 0, 0, 0, 0, 0];
 timeStateTracker = new Tracker.Dependency();
 
@@ -13,11 +15,31 @@ audioSources = {};
 
 userSounds = {};
 
+sequenceConfiguration = {
+    beatNumber : 0, 
+    totalNumberOfBeats : 8,
+    timeBetweenSteps : null,
+    totalNumberOfBeats : 8
+}
+
+var playTime = 0.0; // The next scheduled note will be played at this time 
+var startTime = 0.0;
+var jiggleFactor = 0.250; // Make this number bigger if there is a lag between notes being played
+
 Template.application.onRendered(function(){    
    sequenceIsPlaying = false;
    SelectedSounds.find().forEach(function(sound){
         audioSources[sound._id] = new Source(audioCtx, audioTagFor(sound._id)[0], masterSource);  
     });
+    sequenceConfiguration.timeBetweenSteps = calculateStepDelayFromTempo();
+    
+    var workerBlob = new Blob([
+        "function tempoStep(){timeoutID=setTimeout(function(){postMessage('tempoStep'),tempoStep()},100)}var timeoutID=0;onmessage=function(a){'start'==a.data?timeoutID||tempoStep():'stop'==a.data&&(timeoutID&&clearTimeout(timeoutID),timeoutID=0)};"
+        ])
+    schedulingWorker = new Worker(window.URL.createObjectURL(workerBlob));
+    schedulingWorker.onmessage = function(e) {
+        schedule();
+    };
 });
 
 Template.application.helpers({
@@ -26,7 +48,7 @@ Template.application.helpers({
     }
 });
 
-function calculateStepDelayFromTempo(){
+calculateStepDelayFromTempo = function(){
      var bpm = $('#tempo').val();
     // We treat each sequence step as a 16th note
     var timeBetweenSteps = ((60 / bpm) * 1000) / 2; // in milliseconds
@@ -35,54 +57,55 @@ function calculateStepDelayFromTempo(){
 
 // Plays the user-generated sequence
 playSequence = function() {
-    var timeBetweenSteps = calculateStepDelayFromTempo();
-    sequenceConfiguration = {
-        beatNumber : 0, 
-        totalNumberOfBeats : 8,
-        timeBetweenSteps : timeBetweenSteps,
-        totalNumberOfBeats : 8
-    }
-    tempoStep(SelectedSounds.find(), sequenceConfiguration);
+    startTime = audioCtx.currentTime + 0.005;
+    playTime = 0.0;
+    sequenceConfiguration.beatNumber = 0;
+    schedule();
+    schedulingWorker.postMessage("start");
 }
 
-// Plays all tracks with events at the given step and set up the next step
-tempoStep = function(selectedSoundsCursor, sequenceConfiguration) {
+pauseSequence = function() {
+    schedulingWorker.postMessage("stop");
+}
+
+// Advances one or more tempo steps; Schedules a number of sounds to be played ahead of time
+var schedule = function() {
     timeState = Array.apply(null, Array(8)).map(Number.prototype.valueOf,0); // array of 8 zeros for a default sequence;
     timeState[sequenceConfiguration.beatNumber] = 1;
     timeStateTracker.changed();
+    var currentTime = audioCtx.currentTime;
+    currentTime = currentTime - startTime;
+    while(playTime < currentTime + jiggleFactor) {
+        var relativePlayTime = playTime + startTime;
+        SelectedSounds.find().forEach(function(track){
+            if(track.sequenceSteps[sequenceConfiguration.beatNumber] && !trackIsDisabled(track)) {
+                playSound(track._id, track.path, relativePlayTime);
+            }
+        });
+        
+        sequenceConfiguration.beatNumber++;
     
-    if(!sequenceIsPlaying) {
-        return;
-    }
-    selectedSoundsCursor.forEach(function(track){
-        if(track.sequenceSteps[sequenceConfiguration.beatNumber] && !trackIsDisabled(track)) {
-            playSound(track._id, track.path);
+        // If the user is not currently editing the tempo, update the tempo
+        if(!$('#tempo').is(":focus")) {
+            sequenceConfiguration.timeBetweenSteps = calculateStepDelayFromTempo();
         }
-    });
-    sequenceConfiguration.beatNumber++;
     
-    // If the user is not currently editing the tempo, update the tempo
-    if(!$('#tempo').is(":focus")) {
-        sequenceConfiguration.timeBetweenSteps = calculateStepDelayFromTempo();
+        if(sequenceConfiguration.beatNumber >= sequenceConfiguration.totalNumberOfBeats) { 
+            sequenceConfiguration.beatNumber = 0;
+        }
+        playTime += sequenceConfiguration.timeBetweenSteps / 1000;
     }
-    
-    if(sequenceConfiguration.beatNumber >= sequenceConfiguration.totalNumberOfBeats) { 
-        sequenceConfiguration.beatNumber = 0;
-    }
-    setTimeout( 
-        (tempoStep).bind(undefined, SelectedSounds.find(), sequenceConfiguration) 
-        , sequenceConfiguration.timeBetweenSteps
-    );
 }
 
 // Plays the sound associated with a given track
-playSound = function(selectedSoundId, path) {
+playSound = function(selectedSoundId, path, delayTime) {
+    if(delayTime == null) delayTime = 0;
     var finishedLoading = function(bufferList){
         var source = audioCtx.createBufferSource(); // creates a sound source
         //var source = audioSources[selectedSoundId].source;
         source.buffer = bufferList[0];                    // tell the source which sound to play
         source.connect(audioSources[selectedSoundId].gainNode);       // connect the source to the context's destination (the speakers)
-        source.start(0); 
+        source.start(delayTime); 
     }
     var bufferLoader = new BufferLoader(
         audioCtx,

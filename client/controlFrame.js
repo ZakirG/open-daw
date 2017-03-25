@@ -69,6 +69,7 @@ Template.controlFrame.events({
     'click #pause': function(){
         sequenceIsPlaying = false;
         playModeTracker.changed();
+        pauseSequence();
     },
     'click #solo-mode-toggle': function(){
         inSoloMode = !inSoloMode;

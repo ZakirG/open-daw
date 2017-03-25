@@ -11,6 +11,7 @@
 - responsive layout, works well on iPhone 6 (375px width)
 - track controls: mute, solo, volume/pan knobs, sequencer steps, sound selection
 - master controls: play, pause, add new tracks, adjust tempo, master volume
+- 
 
 ##### Build instructions:
 Install <a href="https://www.meteor.com/" target="_blank">Meteor</a> and then run
@@ -25,7 +26,6 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 ##### Upcoming features for release 1.0:
 - a dynamic grid to allow sequencing with eighth, 16th, and 32nd notes
 - sequence export to wav
-- UI updates and visual improvements
 - sequence presets
 
 ##### Feature goals for v2.0:
@@ -39,3 +39,4 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 Project started 11/29/2016.
 
 Thank you to <a href="https://github.com/eskimoblood/jim-knopf" target="_blank">eskimoblood</a> for their knob control library, used in this application.
+Thank you to <a href="https://github.com/cwilso/" target="_blank">cwilso</a> for inspiration on using Web Workers for <a href="https://github.com/cwilso/MIDIDrums/">note scheduling functionality in a drum sequencer.</a> 
