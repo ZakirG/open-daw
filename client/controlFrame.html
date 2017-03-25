@@ -3,12 +3,38 @@
         <div class="container-fluid content-wrapper">
             <header class="row primary-color">
                 <div class="row" id="title-bar">
-                    <div class="col-sm-4">
-                        <h1>Meteor<b>DAW</b></h1>
-                    </div>
-                    <div class="col-sm-8" id="subtitle">
-                        <h2>A mobile-friendly music sequencing web app written in <a href="https://www.meteor.com/" target="_blank">MeteorJS</a></h2>
-                    </div>
+                    <span class="dropdown">
+                        <button type="button" class="app-menu-button dropdown-toggle" id="app-menu-button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Meteor<b>DAW</b></button>
+                        <ul class="dropdown-menu" aria-labelledby="app-menu-button">
+                            <li><a href="https://github.com/ZakirG/meteor-daw" target="_blank">About MeteorDAW</a></li>
+                        </ul>
+                    </span>
+                    <span class="dropdown">
+                        <button type="button" class="menu-button dropdown-toggle" id="file-menu-button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> File </button>
+                        <ul class="dropdown-menu" aria-labelledby="file-menu-button">
+                            <li><a href="#" >Bounce Project</a></li>
+                        </ul>
+                    </span>
+                    <span class="dropdown">
+                        <button type="button" class="menu-button dropdown-toggle" id="edit-menu-button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Edit </button>
+                        <ul class="dropdown-menu" aria-labelledby="edit-menu-button">
+                            <li><a href="#" id="clear-sequence-button">Clear Sequence</a></li>
+                        </ul>
+                    </span>
+                    <span class="dropdown">
+                        <button type="button" class="menu-button dropdown-toggle" id="track-menu-button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Track </button>
+                        <ul class="dropdown-menu" aria-labelledby="track-menu-button">
+                            <li><a href="#"  data-toggle="modal" data-target="#addTrackModal" >New Track</a></li>
+                        </ul>
+                    </span>
+                    
+                    
+                    
+                    
                 </div>            
                 <div class="row secondary-color" id="control-bar">
                     <div class="col-sm-6">
@@ -43,7 +69,7 @@
             {{> application}}
         </div>
         <footer class="primary-color">
-            <h5>By <a href="https://github.com/ZakirG" target="_blank">Zakir Gowani</a>. Development still in progress.</h5>
+            <span id="app-name">Meteor<b>DAW</b></span>
             <a href="https://github.com/ZakirG/meteor-daw" id="info-link" target="_blank">
                 <img src="/thirdParty/GitHub-Mark-120px-plus.png">
             </a>
@@ -99,24 +125,6 @@
                               <div class="upload-drop-zone" id="drop-zone">
                                 Just drag and drop files here
                               </div>
-                              
-                              <!-- 
-<div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                  <span class="sr-only">60% Complete</span>
-                                </div>
-                              </div>
- -->
-
-                              <!-- 
-                                <div class="js-upload-finished">
-                                <h3>Processed files</h3>
-                                <div class="list-group">
-                                  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-                                  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
-                                </div>
-                              </div>
- -->   
                         </div>
                         <input style="visibility:hidden;height:0;" name="soundSource" id="soundSource"/>
                         <input style="visibility:hidden;height:0;" name="soundType" id="soundType"/>

@@ -68,9 +68,19 @@ pauseSequence = function() {
     schedulingWorker.postMessage("stop");
 }
 
+clearSequence = function(){
+    SelectedSounds.find().forEach(function(track){
+        SelectedSounds.update(track._id, {$set: {sequenceSteps: emptySequence()}});
+    });
+}
+
+emptySequence = function(){
+    return Array.apply(null, Array(sequenceConfiguration.totalNumberOfBeats)).map(Number.prototype.valueOf,0);
+}
+
 // Advances one or more tempo steps; Schedules a number of sounds to be played ahead of time
 var schedule = function() {
-    timeState = Array.apply(null, Array(8)).map(Number.prototype.valueOf,0); // array of 8 zeros for a default sequence;
+    timeState = emptySequence(); // array of 8 zeros for a default sequence;
     timeState[sequenceConfiguration.beatNumber] = 1;
     timeStateTracker.changed();
     var currentTime = audioCtx.currentTime;

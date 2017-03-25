@@ -26,18 +26,25 @@ body {
 
 footer {
     position:fixed;
-    bottom:0;
+    bottom:0px;
     width:100%;
+    padding:20px;
+    height:50px;
     font-size:12px;
     z-index:2;
 }
 
-#title-bar, footer {
+footer span#app-name {
+    font-size:18px;
+}
+
+footer {
     padding:10px 50px;
 }
 
 #title-bar {
-    padding-right:40px;
+    height:30px;
+    padding:0px 40px;
     width:100%;
     display:block;
 }
@@ -57,8 +64,8 @@ footer {
 #info-link {
     position:absolute;
     right:40px;
-    bottom:5px;
-    font-size:34px;
+    bottom:10px;
+    font-size:25px;
     color:white; 
     opacity:0.7;
     -webkit-transition: opacity .3s;
@@ -98,19 +105,9 @@ a:active, a:focus, a:hover {
 }
 
 @media screen and (min-width:767px) {
-    footer {
-        position:absolute;
-        bottom:0;
-    }
     #subtitle {
         margin-top:10px;
     }    
-}
-
-@media screen and (min-width:992px) {
-    footer {
-        padding:20px 70px;
-    }
 }
 
 .upload-drop-zone {
@@ -167,4 +164,10 @@ a:active, a:focus, a:hover {
 
 #addTrackModal #dLabel:hover, #addTrackModal #dLabel:focus {
     background-color: #e6e6e6;
+}
+
+@media screen and (min-width:767px) {
+    #title-bar {
+        padding:0px 55px;
+    }
 }

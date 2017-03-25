@@ -129,5 +129,8 @@ Template.controlFrame.events({
             uploadedFiles = [files[0]];
         }
         addTrackTracker.changed();
+    },
+    'click #clear-sequence-button': function(){
+        clearSequence();
     }
 });

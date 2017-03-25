@@ -1,6 +1,6 @@
 #control-bar {
     width:100%;
-    padding:20px 15px 5px 15px;
+    padding:20px 5px 5px 15px;
     margin:auto;
     z-index:2;
 }
@@ -93,6 +93,35 @@
     margin-top:30px;
 }
 
+.menu-button, .app-menu-button {
+    border:0;
+    background:none;
+    cursor:initial;
+    width:50px;
+    height:30px;
+    border-radius: 0;
+    font-size:13px;
+}
+
+.app-menu-button {
+    width:90px;
+}
+
+.menu-button:active, .menu-button:focus, .app-menu-button:active, .app-menu-button:focus {
+    background-color:#00E1FF;
+    color:white;
+    outline:none;
+}
+
+#title-bar .dropdown-menu {
+    border-radius:0 0px 3px 3px;
+    font-size:13px;
+}
+
+.menu-button:active, .menu-button:focus {
+    font-weight:bold;
+}
+
 @media screen and (min-width:767px) {
     .sm-align-right {
         text-align:right;
@@ -100,6 +129,6 @@
     }
     #control-bar {
         width:100%;
-        padding:20px 40px 5px 40px;
+        padding:20px 30px 5px 30px;
     }
 }
