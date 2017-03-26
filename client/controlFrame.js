@@ -60,6 +60,8 @@ Template.controlFrame.helpers({
     }
 });
 
+var menuOpen = false;
+
 Template.controlFrame.events({
     'click #play': function(){
         sequenceIsPlaying = true;
@@ -132,5 +134,19 @@ Template.controlFrame.events({
     },
     'click #clear-sequence-button': function(){
         clearSequence();
+    },
+    'click #title-bar button': function(){
+        if(!menuOpen) {
+            $('#title-bar button').on('mouseover', function(){
+                $(this).click();
+            });
+            menuOpen = true;
+        }
+    },
+    'focusout #title-bar': function(event){
+        if(event.relatedTarget == null || (!$(event.relatedTarget).hasClass('menu-button') && !$(event.relatedTarget).hasClass('app-menu-button'))) {
+            menuOpen = false;
+            $('#title-bar button').off();
+        }
     }
 });
