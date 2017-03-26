@@ -14,7 +14,7 @@
                         <button type="button" class="menu-button dropdown-toggle" id="file-menu-button" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> File </button>
                         <ul class="dropdown-menu" aria-labelledby="file-menu-button">
-                            <li><a href="#" >Bounce Project</a></li>
+                            <li><a href="#"  data-toggle="modal" data-target="#bounceModal">Bounce Project</a></li>
                         </ul>
                     </span>
                     <span class="dropdown">
@@ -28,7 +28,7 @@
                         <button type="button" class="menu-button dropdown-toggle" id="track-menu-button" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Track </button>
                         <ul class="dropdown-menu" aria-labelledby="track-menu-button">
-                            <li><a href="#"  data-toggle="modal" data-target="#addTrackModal" >New Track</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#addTrackModal" >New Track</a></li>
                         </ul>
                     </span>
                 </div> 
@@ -71,6 +71,8 @@
             </a>
         </footer>
     </div>
+    
+    
     <div class="modal fade" id="addTrackModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -137,5 +139,25 @@
             </form>
         </div>
       </div>
+    </div>
+
+    <div class="modal fade" id="bounceModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>File format: WAV</p>
+                    <p>Start: 1</p>
+                    <p>End: {{totalNumberOfBeats}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="bounce-sequence-button">Bounce</button>
+                    <a class="btn btn-primary" id="download-bounce" download="myBounce">Download</a>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

@@ -57,6 +57,9 @@ Template.controlFrame.helpers({
         if(soundType == 'preset' && soundSource != null && soundSource != "") return true;
         if(soundType == 'user-upload' && uploadedFiles.length > 0) return true;
         return false;
+    },
+    totalNumberOfBeats: function(){
+        return sequenceConfiguration.totalNumberOfBeats;
     }
 });
 
@@ -66,7 +69,7 @@ Template.controlFrame.events({
     'click #play': function(){
         sequenceIsPlaying = true;
         playModeTracker.changed();
-        playSequence();
+        playSequence(null);
     },
     'click #pause': function(){
         sequenceIsPlaying = false;
@@ -135,6 +138,12 @@ Template.controlFrame.events({
     'click #clear-sequence-button': function(){
         clearSequence();
     },
+    'click #bounce-sequence-button': function(){
+        sequenceIsPlaying = false;
+        playModeTracker.changed();
+        pauseSequence();
+        bounceSequence();
+    },
     'click #title-bar button': function(){
         if(!menuOpen) {
             $('#title-bar button').on('mouseover', function(){
@@ -148,5 +157,8 @@ Template.controlFrame.events({
             menuOpen = false;
             $('#title-bar button').off();
         }
+    },
+    'shown.bs.modal #bounceModal': function(){
+        $('#download-bounce').addClass('disabled');
     }
 });

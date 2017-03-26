@@ -106,8 +106,8 @@ table.sequencer-table td:nth-child(4n+0) {
     height:20px;
     border-radius:5px;
     display:inline-block;
-    -webkit-transition:-webkit-transform .3s;
-            transition:transform .3s;
+    -webkit-transition:-webkit-transform .2s;
+            transition:transform .2s;
 }
 
 button.sequence-step:hover {
