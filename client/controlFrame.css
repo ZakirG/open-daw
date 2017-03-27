@@ -1,13 +1,13 @@
 #control-bar {
     width:100%;
-    padding:20px 5px 5px 0px;
+    padding:15px 5px 0px 0px;
     margin:auto;
     z-index:2;
     position:fixed;
     top:30px;
     right:0;
-    height:85px;
-    margin-bottom:60px;
+    height:75px;
+    margin-bottom:50px;
 }
 
 .large-button {
@@ -52,12 +52,12 @@
 
 .header-input-label {
     position:relative;
-    left:-42px;
+    left:-35px;
     top:24px;
 }
 
 .header-input-label#add-track-label {
-    left:-55px;
+    left:-60px;
     margin-right:-60px;
 }
 
@@ -134,7 +134,7 @@
     }
     #control-bar {
         width:100%;
-        padding:20px 30px 5px 15px;
+        padding:15px 30px 0px 15px;
     }
     .menu-button, .app-menu-button {
         font-size:13px;
