@@ -1,6 +1,6 @@
-# MeteorDAW
+# OpenDAW
 
-#### A mobile-friendly music sequencing web app written in MeteorJS. 
+#### An open source, mobile-friendly digital audio workstation written in MeteorJS. 
 
 ##### Screenshots:
 <img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="550"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
@@ -13,8 +13,8 @@
 ##### Build instructions:
 Install <a href="https://www.meteor.com/" target="_blank">Meteor</a> and then run
 ```
-git clone https://github.com/ZakirG/meteor-daw.git
-cd meteor-daw/
+git clone https://github.com/ZakirG/open-daw.git
+cd open-daw/
 meteor
 ```
 You may be prompted to install additional packages. 
@@ -22,7 +22,6 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 
 ##### Upcoming features for version 0.1:
 - A dynamic grid to allow sequencing with eighth, 16th, and 32nd notes
-- Sequence presets
 
 ##### Feature goals for version 0.2:
 - A midi-compatible piano roll

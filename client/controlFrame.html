@@ -5,9 +5,9 @@
                 <div class="row primary-color" id="title-bar">
                     <span class="dropdown">
                         <button type="button" class="app-menu-button dropdown-toggle" id="app-menu-button" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Meteor<b>DAW</b></button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Open<b>DAW</b></button>
                         <ul class="dropdown-menu" aria-labelledby="app-menu-button">
-                            <li><a href="https://github.com/ZakirG/meteor-daw" target="_blank">About MeteorDAW</a></li>
+                            <li><a href="https://github.com/ZakirG/meteor-daw" target="_blank">About OpenDAW</a></li>
                         </ul>
                     </span>
                     <span class="dropdown">
@@ -65,7 +65,7 @@
             {{> application}}
         </div>
         <footer class="primary-color">
-            <span id="app-name">Meteor<b>DAW</b></span>
+            <span id="app-name">Open<b>DAW</b></span>
             <a href="https://github.com/ZakirG/meteor-daw" id="info-link" target="_blank">
                 <img src="/thirdParty/GitHub-Mark-120px-plus.png">
             </a>
@@ -91,11 +91,6 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="sound-preset-dropdown">
                             <div class="dropdown">
-                              <!-- 
-<a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="dropdown-header">Select a preset</span>
-                              </a>
- -->
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="dropdown-text">Select a preset</span>
                                     <span class="caret"></span>
@@ -108,19 +103,16 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="sound-upload">
-                            <h4>Select files from your computer</h4>
-                            
-                            
-                              
+                            <h4>Select a file from your computer</h4>
                             <div class="form-inline">
                               <div class="form-group">
-                                <input type="file" name="files[]" id="js-upload-files" multiple>
+                                <input type="file" name="files[]" id="js-upload-files" accept=".wav">
                               </div>
                              <!--  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button> -->
                             </div>
-                              <h4>Or drag and drop files below</h4>
+                              <h4>Or drag and drop a file below</h4>
                               <div class="upload-drop-zone" id="drop-zone">
-                                Just drag and drop files here
+                                Just drag and drop a file here
                               </div>
                         </div>
                         <input style="visibility:hidden;height:0;" name="soundSource" id="soundSource"/>

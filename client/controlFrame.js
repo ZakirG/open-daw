@@ -19,6 +19,7 @@ Template.controlFrame.onRendered(function(){
     dropZone.ondrop = function(e) {
         e.preventDefault();
         this.className = 'upload-drop-zone';
+        $('#drop-zone').text(e.dataTransfer.files[0].name)
         uploadedFiles = [e.dataTransfer.files[0]];
         addTrackTracker.changed();
     }
@@ -96,6 +97,9 @@ Template.controlFrame.events({
         $('#add-track-form #soundSource').val(event.target.id);
         $('#add-track-form #soundType').val('preset');
         addTrackTracker.changed();
+    },
+    'hidden.bs.modal #addTrackModal': function(event) {
+        $('#drop-zone').text('Just drag and drop a file here');
     },
     'click #create-track-submit' : function(event) {
         event.preventDefault();
