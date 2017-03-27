@@ -37,9 +37,6 @@ Template.application.onRendered(function(){
         "function tempoStep(){timeoutID=setTimeout(function(){postMessage('tempoStep'),tempoStep()},100)}var timeoutID=0;onmessage=function(a){'start'==a.data?timeoutID||tempoStep():'stop'==a.data&&(timeoutID&&clearTimeout(timeoutID),timeoutID=0)};"
         ])
     schedulingWorker = new Worker(window.URL.createObjectURL(workerBlob));
-    // schedulingWorker.onmessage = function(e) {
-//         schedule();
-//     };
 });
 
 Template.application.helpers({

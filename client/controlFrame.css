@@ -1,8 +1,13 @@
 #control-bar {
     width:100%;
-    padding:20px 5px 5px 15px;
+    padding:20px 5px 5px 0px;
     margin:auto;
     z-index:2;
+    position:fixed;
+    top:30px;
+    right:0;
+    height:85px;
+    margin-bottom:60px;
 }
 
 .large-button {
@@ -38,7 +43,7 @@
     height:36px;
     width:50px;
     text-align:center;
-    margin:0 5px;
+    margin:0 0 0 5px;
     position:relative;
     top:-1px;
     -webkit-transition: background-color .2s;
@@ -89,8 +94,8 @@
 } 
 
 .sm-align-right {
-    text-align:left;
-    margin-top:30px;
+    text-align:right;
+    /* margin-top:30px; */
 }
 
 .menu-button, .app-menu-button {
@@ -100,7 +105,7 @@
     width:50px;
     height:30px;
     border-radius: 0;
-    font-size:13px;
+    font-size:15px;
 }
 
 .app-menu-button {
@@ -129,6 +134,10 @@
     }
     #control-bar {
         width:100%;
-        padding:20px 30px 5px 30px;
+        padding:20px 30px 5px 15px;
     }
+    .menu-button, .app-menu-button {
+        font-size:13px;
+    }
+
 }

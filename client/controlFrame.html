@@ -2,7 +2,7 @@
     <div class="page-wrapper">
         <div class="container-fluid content-wrapper">
             <header class="row primary-color">
-                <div class="row" id="title-bar">
+                <div class="row primary-color" id="title-bar">
                     <span class="dropdown">
                         <button type="button" class="app-menu-button dropdown-toggle" id="app-menu-button" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Meteor<b>DAW</b></button>
@@ -33,7 +33,7 @@
                     </span>
                 </div> 
                 <div class="row secondary-color" id="control-bar">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-xs-7">
                         {{#if inPlayMode}}
                             <button class="large-button" id="pause">
                                 <span class="glyphicon glyphicon-pause"></span>
@@ -50,7 +50,7 @@
                     
                         <input class="header-input-box" id="tempo" value="120"/><label class="header-input-label" for="tempo">BPM</label>
                     </div>
-                    <div class="col-sm-6 sm-align-right">
+                    <div class="col-sm-6 sm-align-right col-xs-5">
                         <button class="large-button {{#if inSoloMode}}active{{else}}inactive{{/if}}" id="solo-mode-toggle">
                             S
                         </button>

@@ -1,7 +1,6 @@
 // Returns true if track playback has been temporarily disabled by solo/mute
 trackIsDisabled = function(selectedSound) {
-    inSoloModeTracker.depend();
-    return selectedSound.muted || ( !selectedSound.soloed && inSoloMode );
+    return selectedSound.muted || ( inSoloMode && !selectedSound.soloed );
 }
 
 Template.track.onRendered(function(){
