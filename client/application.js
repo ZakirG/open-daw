@@ -52,7 +52,24 @@ calculateStepDelayFromTempo = function(){
     return timeBetweenSteps;
 }
 
-// Plays the user-generated sequence
+// Note that this value depends on the samples used
+var calculateTrackLengthInMS = function(){
+    // How long the track would be if no samples were loaded
+    var lengthIfNoAudio = sequenceConfiguration.timeBetweenSteps * sequenceConfiguration.totalNumberOfBeats;
+    // When the last sound finishes playing
+    var latestSampleTime = 0;
+    SelectedSounds.find().forEach(function(track){
+        for (var i = 0; i < sequenceConfiguration.totalNumberOfBeats; i++) {
+            if(track.sequenceSteps[i]) {
+                var duration = (audioTagFor(track._id).prop('duration') * 1000) + (i * sequenceConfiguration.timeBetweenSteps);
+                if(duration > latestSampleTime) latestSampleTime = duration;
+            }
+        }
+    });
+    
+    return Math.max(lengthIfNoAudio, latestSampleTime);
+}
+
 playSequence = function(upperLimit) {
     startTime = audioCtx.currentTime + 0.005;
     playTime = 0.0;
@@ -89,6 +106,7 @@ bounceSequence = function(){
     sequenceIsPlaying = true;
     playModeTracker.changed();
     playSequence(sequenceConfiguration.totalNumberOfBeats);
+    
     window.setTimeout(function(){
         mediaRecorder.stop();
         mediaRecorder.exportWAV(function(blob) {
@@ -97,7 +115,7 @@ bounceSequence = function(){
             $('#download-bounce').removeClass('disabled');
         })
         masterSource.gainNode.connect(audioCtx.destination);
-    }, sequenceConfiguration.totalNumberOfBeats * sequenceConfiguration.timeBetweenSteps);
+    }, calculateTrackLengthInMS());
 }
 
 // Advances one or more tempo steps; Schedules a number of sounds to be played ahead of time

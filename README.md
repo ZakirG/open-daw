@@ -7,8 +7,8 @@
 
 ##### Features (version 0.1):
 - Sequencer functionality: program rhythms w/ presets and user-uploaded sounds
-- Responsive layout, works well on iPhone 6 (375px width)
 - Sequences can be bounced and exported to .wav files
+- Responsive layout, works well on iPhone 6 (375px width)
 
 ##### Build instructions:
 Install <a href="https://www.meteor.com/" target="_blank">Meteor</a> and then run
@@ -27,7 +27,6 @@ Once the app is running, navigate to http://localhost:3000/ in your browser.
 ##### Feature goals for version 0.2:
 - A midi-compatible piano roll
 - Allow for user-uploaded audio tracks with preview waveforms
-- More precise audio scheduling to avoid timing issues during paints
 - VST-like track effects with the Web Audio API and <a href="http://sox.sourceforge.net/Docs/FAQ" target="_blank">SoX</a>
 - An undo button, a redo button, an undo history with human-readable action descriptions
 - Keyboard shortcuts
@@ -38,4 +37,4 @@ Thank you to <a href="https://github.com/eskimoblood/jim-knopf" target="_blank">
 
 Thank you to <a href="https://github.com/cwilso/" target="_blank">cwilso</a> for inspiration on using Web Workers for <a href="https://github.com/cwilso/MIDIDrums/">note scheduling functionality in a drum sequencer.</a> 
 
-Thank you to <a href="https://github.com/mattdiamond/" target="_blank">mattdiamond</a> for their <a href="https://github.com/mattdiamond/Recorderjs">RecorderJS library.</a>, without which bounce functionality would not have been possible.
+Thank you to <a href="https://github.com/mattdiamond/" target="_blank">mattdiamond</a> for their <a href="https://github.com/mattdiamond/Recorderjs">RecorderJS library</a>, without which bounce functionality would not have been possible.
