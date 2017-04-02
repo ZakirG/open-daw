@@ -6,8 +6,8 @@
 <img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="550"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
 
 ##### Features (version 0.1):
-- Sequencer functionality: program rhythms w/ presets and user-uploaded sounds
-- Sequences can be bounced and exported to .wav files
+- Sequencer functionality: program rhythms with presets and user-uploaded sounds
+- Bounce and export your sequence to a .wav file
 - Responsive layout, works well on iPhone 6 (375px width)
 
 ##### Build instructions:
@@ -20,8 +20,6 @@ meteor
 You may be prompted to install additional packages. 
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
-##### Upcoming features for version 0.1:
-- A dynamic grid to allow sequencing with eighth, 16th, and 32nd notes
 
 ##### Feature goals for version 0.2:
 - A midi-compatible piano roll
