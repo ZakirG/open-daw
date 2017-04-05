@@ -7,7 +7,8 @@
 
 ##### Features (version 0.1):
 - Sequencer functionality: program rhythms with presets and user-uploaded sounds
-- Bounce and export your sequence to a .wav file
+- Stereo panning controls, solo-mode toggle, mid-playback tempo adjustability
+- Bounce and export your sequences to .wav files
 - Responsive layout, works well on iPhone 6 (375px width)
 
 ##### Build instructions:
