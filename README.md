@@ -1,6 +1,6 @@
 # OpenDAW
 
-#### An open source, mobile-friendly Digital Audio Workstation written in MeteorJS. 
+#### A mobile-friendly drum machine written in MeteorJS. 
 
 ##### Screenshots:
 <img src="./public/screenshots/desktopScreenshot.png" alt="App Screenshot on Desktop" width="550"/> <img src="./public/screenshots/mobileScreenshot.png" alt="App Screenshot on Mobile" width="200"/>
