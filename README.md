@@ -21,14 +21,6 @@ meteor
 You may be prompted to install additional packages. 
 Once the app is running, navigate to http://localhost:3000/ in your browser.
 
-
-##### Feature goals for version 0.2:
-- A midi-compatible piano roll
-- Allow for user-uploaded audio tracks with preview waveforms
-- VST-like track effects with the Web Audio API and <a href="http://sox.sourceforge.net/Docs/FAQ" target="_blank">SoX</a>
-- An undo button, a redo button, an undo history with human-readable action descriptions
-- Keyboard shortcuts
-
 Project started 11/29/2016.
 
 Thank you to <a href="https://github.com/eskimoblood/jim-knopf" target="_blank">eskimoblood</a> for their knob control library, used in this application.
